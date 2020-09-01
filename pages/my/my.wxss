@@ -1,0 +1,24 @@
+/* pages/my/my.wxss */
+.user-box{
+  margin: 30rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.van-image--round{
+  padding: 30rpx;
+}
+.nav-box{
+  margin: 30rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx; 
+  overflow: hidden;
+}
+.btn-box{
+  margin: 30rpx;
+}
+.van-button--primary {
+  width: 100%;
+}

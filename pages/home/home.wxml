@@ -1,0 +1,58 @@
+<!--pages/home/home.wxml-->
+<view>
+	<van-cell title="当前位置" is-link value="{{areaText}}" arrow-direction="down" catchtap="showPopup"/>
+	<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" >
+    <van-area area-list="{{ areaList }}" bind:confirm="onConfirm" bind:cancel="onClose"/>
+  </van-popup>
+	<view class="page-section page-section-spacing swiper">
+		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<block wx:for="{{background}}" wx:key="image">
+				<swiper-item>
+					<view class="swiper-item">
+						<!-- <van-image width="100%" height="100%"  wx:if='{{item.image}}' show-loading src="{{imgUrl+item.image}}"/> -->
+						<van-image width="100%" height="100%" wx:if='{{item}}' show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+
+	<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
+		<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onMagic" data-url="{{item.url}}">
+			<image style="width:50px; height: 50px;border-radius:10px" src="{{item.imgPath}}" />
+			<text class="nav-title">{{item.title}}</text>
+		</van-grid-item>
+	</van-grid>
+	<van-divider />
+	<van-cell title="每日一课" value="商机" link-type="navigateTo" url="/pages/logs/logs" custom-class="caption"/>
+	<van-cell center title="性格外向的人一定适合创业吗？"  label="2020-06-24" />
+	<van-cell center title="面对强监管，创业者该如何应对"  label="2020-06-24" />
+	<view>
+		<van-cell custom-class="flex">
+			<view slot="title" class="user-box">
+				<view class="van-cell-text">
+					<van-image width="30" height="30" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+				</view>
+				<view class="user-info">
+					<view class="user-name">某某某</view>
+					<view class="user-unit">某某公司高管</view>
+				</view>
+			</view>
+			<view>
+				<van-button round size="mini" type="info">谈合作</van-button>
+			</view>
+		</van-cell>
+		<view class="business-msg">
+			<view class="pic-box">
+				<view class="business-con">各位老板早上好！我公司承接各类型小程序！有需要联系~</view>
+				<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
+					<van-grid-item use-slot wx:for="{{ 5 }}" wx:for-item="index" wx:key="index">
+						<view class="pic-item">
+							<van-image width="100%" height="100%" show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+						</view>
+					</van-grid-item>
+				</van-grid>
+			</view>
+		</view>
+	</view>
+</view>
