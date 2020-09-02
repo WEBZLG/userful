@@ -1,0 +1,43 @@
+<!--pages/card/card.wxml-->
+<view>
+  <view class="card-bg">
+    <image src="../../images/mp_bg.png"></image>
+    <view class="card-text">
+      <van-image width="80" height="80" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+      <view class="card-user">
+        <view class="name">姓名</view>
+        <view>公司</view>
+        <view>地区</view>
+      </view>
+    </view>
+  </view>
+  <van-cell title="发布的商机"  />
+  <view class="publish">
+    		<van-cell custom-class="flex">
+			<view slot="title" class="user-box" catchtap="onCard">
+				<view class="van-cell-text">
+					<van-image width="30" height="30" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+				</view>
+				<view class="user-info">
+					<view class="user-name">某某某</view>
+					<view class="user-unit">某某公司高管</view>
+				</view>
+			</view>
+			<view>
+				<van-button round size="mini" type="info">谈合作</van-button>
+			</view>
+		</van-cell>
+		<view class="business-msg">
+			<view class="pic-box" catchtap="onBusinessDetail">
+				<view class="business-con">各位老板早上好！我公司承接各类型小程序！有需要联系~</view>
+				<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
+					<van-grid-item use-slot wx:for="{{ 5 }}" wx:for-item="index" wx:key="index">
+						<view class="pic-item">
+							<van-image width="100%" height="100%" show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+						</view>
+					</van-grid-item>
+				</van-grid>
+			</view>
+		</view>
+  </view>
+</view>

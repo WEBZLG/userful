@@ -2,3 +2,7 @@
 page {
   padding-bottom: 120rpx;
 } 
+image{
+  height: 100%;
+  width: 100%;
+}

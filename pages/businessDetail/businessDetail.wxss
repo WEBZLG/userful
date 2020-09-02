@@ -1,0 +1,42 @@
+/* pages/businessDetail/businessDetail.wxss */
+.user-box{
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 14px;
+  color: #999999;
+}
+.user-info{
+  margin-left: 20rpx;
+}
+.user-name{
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+}
+.local{
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.van-cell-n{
+  display: block !important;
+}
+.bottom-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #333333;
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.new-btn{
+  width: 100%;
+}
+van-button{
+  width: 48%;
+}

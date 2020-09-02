@@ -15,6 +15,7 @@ Page({
     duration: 500,
     show:false,
     areaList:AREA.default,
+    loading:true,
     areaText:'',
     iconNav: [{
         imgPath: '../../images/qy-server.png',
@@ -96,7 +97,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      loading: false,
+    });
   },
 
   /**

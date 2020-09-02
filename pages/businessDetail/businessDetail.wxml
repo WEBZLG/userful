@@ -1,0 +1,22 @@
+<!--pages/businessDetail/businessDetail.wxml-->
+<view>
+	<van-cell custom-class="van-cell-n">
+		<view slot="title" class="user-box" catchtap="onCard">
+			<view class="van-cell-text">
+				<van-image width="30" height="30" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+			</view>
+			<view class="user-info">
+				<view class="user-name">某某某</view>
+				<view class="user-unit">某某公司高管</view>
+			</view>
+		</view>
+    <view class="local">
+      <view>黑龙江哈尔滨</view>
+      <view>2020-09-02发布</view>
+    </view>
+	</van-cell>
+  <view class="bottom-btn">
+    <van-button custom-class="new-btn" round type="primary" size="small">递名片</van-button>
+    <van-button custom-class="new-btn" round type="info" size="small">谈合作</van-button>
+  </view>
+</view>

@@ -12,11 +12,12 @@
 			</block>
 		</swiper>
 	</view>
-
+	<van-skeleton row="3" loading="{{ loading }}">
 	<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
 		<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onMagic" data-url="{{item.url}}">
-			<image style="width:50px; height: 50px;border-radius:10px" src="{{item.imgPath}}" />
+			<image style="width:50px; height: 50px;border-radius:50%" src="{{item.imgPath}}" />
 			<text class="nav-title">{{item.title}}</text>
 		</van-grid-item>
 	</van-grid>
+		</van-skeleton>
 </view>

@@ -1,0 +1,76 @@
+/* pages/card/card.wxss */
+.card-bg {
+  position: relative;
+  height: 400rpx;
+  width: 100%;
+}
+
+.card-text {
+  position: absolute;
+  top: 20rpx;
+  right: 70rpx;
+  left: 70rpx;
+  bottom: 90rpx;
+  display: flex;
+  color: #fff;
+  align-items: center;
+}
+
+.card-user {
+  flex: 1;
+}
+
+.card-text .van-image {
+  margin-right: 20rpx;
+  border: 2px solid #ffffff;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 20rpx;
+  margin-bottom: 10rpx;
+
+}
+.user-box{
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 14px;
+  color: #999999;
+}
+.user-info{
+  margin-left: 20rpx;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-name{
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+}
+.pic-box{
+  margin: 20rpx 10rpx;
+}
+.pic-item{
+  width: 100%;
+  height: 140rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.caption {
+  font-weight: bold;
+}
+.van-grid-item__content{
+  padding: 0 !important;
+}
+.business-con{
+  padding:0 20rpx 20rpx;
+}
+.icon-nav{
+  margin: 20rpx 0;
+}

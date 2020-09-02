@@ -1,13 +1,18 @@
 /* pages/my/my.wxss */
+.user-bg{
+  height: 400rpx;
+  width: 100%;
+}
 .user-box{
-  margin: 30rpx;
-  background-color: #ffffff;
-  border-radius: 10rpx;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  text-align: center;
 }
 .van-image--round{
+  margin: 0 auto;
   padding: 30rpx;
 }
 .nav-box{

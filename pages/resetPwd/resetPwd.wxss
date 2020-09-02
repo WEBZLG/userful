@@ -1,0 +1,7 @@
+/* pages/regist/regist.wxss */
+.btn-box{
+  margin: 30rpx;
+}
+.van-button--primary {
+  width: 100%;
+}

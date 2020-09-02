@@ -1,10 +1,16 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/card/card",
     "pages/logs/logs",
     "pages/my/my",
     "pages/index/index",
-    "pages/service/service"
+    "pages/login/login",
+    "pages/regist/regist",
+    "pages/resetPwd/resetPwd",
+    "pages/service/service",
+    "pages/business/business",
+    "pages/businessDetail/businessDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -57,7 +63,8 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
-    "van-area": "@vant/weapp/area/index"
+    "van-area": "@vant/weapp/area/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   },
   "sitemapLocation": "sitemap.json"
 }

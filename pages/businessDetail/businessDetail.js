@@ -1,30 +1,11 @@
-// pages/service/service.js
-const API = require('../../utils/api');
+// pages/businessDetail/businessDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl:API.IMG_BASE_URL,//图片路径
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: true,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500,
-    loading:true,
-    iconNav: [{
-        imgPath: '../../images/qy-server.png',
-        title: "企业服务",
-        url: "../magic/magic"
-      },
-      {
-        imgPath: '../../images/fl-server.png',
-        title: "法律服务",
-        url: "../naming/naming"
-      }
-    ]
+
   },
 
   /**
@@ -38,21 +19,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      loading: false,
-    });
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' &&
-    this.getTabBar()) {
-    this.getTabBar().setData({
-      selected: 1
-    })
-  }
+
   },
 
   /**
