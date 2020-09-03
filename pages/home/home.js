@@ -19,7 +19,7 @@ Page({
     areaText:'',
     iconNav: [{
         imgPath: '../../images/qy-server.png',
-        title: "企业服务",
+        title: "企业管理",
         url: "../magic/magic"
       },
       {

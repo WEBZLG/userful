@@ -18,6 +18,6 @@
 		</van-cell-group>
 	</view>
 	<view class="btn-box" wx:if="{{userInfo}}">
-		<van-button type="primary" catchtap="onSignOut">退出登录</van-button>
+		<van-button type="info" plain round catchtap="onSignOut">退出登录</van-button>
 	</view>
 </view>

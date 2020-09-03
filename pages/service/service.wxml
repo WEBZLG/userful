@@ -6,7 +6,7 @@
 				<swiper-item>
 					<view class="swiper-item">
 						<!-- <van-image width="100%" height="100%"  wx:if='{{item.image}}' show-loading src="{{imgUrl+item.image}}"/> -->
-						<van-image width="100%" height="100%" wx:if='{{item}}' show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+						<van-image width="100%" height="100%" wx:if='{{item}}' show-loading src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599113253498&di=74ed259b542d5688252597d602ce89fe&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F2c60ab6d1508f04ff48c8e3ae2431fdba3e405c1109ca-4oPCmF_fw658" />
 					</view>
 				</swiper-item>
 			</block>

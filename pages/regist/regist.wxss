@@ -2,6 +2,6 @@
 .btn-box{
   margin: 30rpx;
 }
-.van-button--primary {
+.van-button--info {
   width: 100%;
 }

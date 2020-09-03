@@ -2,7 +2,7 @@ Component({
   data: {
     selected: 0,
     color: "#333333",
-    selectedColor: "#1296db",
+    selectedColor: "#277CFB",
     icon: {
       normal: 'https://img.yzcdn.cn/vant/user-inactive.png',
       active: 'https://img.yzcdn.cn/vant/user-active.png',

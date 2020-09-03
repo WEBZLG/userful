@@ -1,20 +1,21 @@
 /* pages/login.wxss */
-.btn-box{
-  margin: 30rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.btn-box {
+  padding: 30rpx;
 }
+
 van-button {
   width: 48%;
 }
+
 .van-button {
   width: 100%;
 }
-.van-button--small{
+
+.van-button--small {
   border: none !important;
 }
-.logo-box{
+
+.logo-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -23,8 +24,24 @@ van-button {
   text-align: center;
   color: #ffffff;
 }
-.login-bg{
+
+.login-bg {
   position: relative;
   height: 440rpx;
   width: 100%;
+}
+
+.forget-pwd {
+  font-size: 14px;
+  text-align: right;
+  padding: 0 30rpx;
+  color: #277CFB;
+}
+.regist-btn{
+  color: #277CFB;
+}
+.regist-box{
+  text-align: center;
+  margin-top: 50rpx;
+  font-size: 14px;  
 }
