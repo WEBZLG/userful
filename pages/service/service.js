@@ -15,13 +15,38 @@ Page({
     duration: 500,
     loading:true,
     iconNav: [{
-        imgPath: '../../images/qy-server.png',
-        title: "企业服务",
+        imgPath: '../../images/1.png',
+        title: "工商财税",
         url: "../magic/magic"
       },
       {
-        imgPath: '../../images/fl-server.png',
-        title: "法律服务",
+        imgPath: '../../images/2.png',
+        title: "人力资源",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/10.png',
+        title: "知识产权",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/5.png',
+        title: "税收筹划",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/8.png',
+        title: "企业印刷",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/7.png',
+        title: "办公家具",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/6.png',
+        title: "查看更多",
         url: "../naming/naming"
       }
     ]

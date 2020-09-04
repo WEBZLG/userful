@@ -2,3 +2,26 @@
 .swiper-item{
   height: 400rpx;
 }
+.nav-title{
+  font-size: 12px;
+}
+.van-grid-item__content{
+  padding: 0 !important;
+}
+.van-grid-item{
+  margin-top: 30rpx;
+}
+.caption-flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20rpx 0;
+  color: #999999;
+  border-bottom:1px solid #999999;
+}
+.advertisement{
+  height: 200rpx;
+  margin:20rpx 30rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}

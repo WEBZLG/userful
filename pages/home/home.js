@@ -18,8 +18,24 @@ Page({
     loading:true,
     areaText:'',
     iconNav: [{
-        imgPath: '../../images/qy-server.png',
-        title: "企业管理",
+      imgPath: '../../images/cz-icon.png',
+      title: "成长路",
+      url: "../magic/magic"
+    },{
+      imgPath: '../../images/jc-icon.png',
+      title: "创业基础",
+      url: "../magic/magic"
+    },{
+      imgPath: '../../images/jj-icon.png',
+      title: "创业进阶",
+      url: "../magic/magic"
+    },{
+      imgPath: '../../images/qy-server.png',
+      title: "企业管理",
+      url: "../magic/magic"
+    },{
+        imgPath: '../../images/hy-icon.png',
+        title: "行业案例",
         url: "../magic/magic"
       },
       {

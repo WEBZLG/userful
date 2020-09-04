@@ -46,3 +46,6 @@
 .icon-nav{
   margin: 20rpx 0;
 }
+.van-grid-item{
+  margin-top: 30rpx;
+}
