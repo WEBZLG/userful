@@ -1,4 +1,7 @@
 /* pages/home/home.wxss */
+page {
+  padding-bottom: 120rpx;
+} 
 .nav-title{
   font-size: 12px;
 }
@@ -45,7 +48,12 @@
 }
 .icon-nav{
   margin: 20rpx 0;
+  background: #ffffff;
+  padding-bottom: 30rpx;
 }
 .van-grid-item{
   margin-top: 30rpx;
+}
+swiper{
+  height:400rpx;
 }

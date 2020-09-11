@@ -39,6 +39,21 @@ Page({
         url: "../magic/magic"
       },
       {
+        imgPath: '../../images/weixin.png',
+        title: "微商课程",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/taobao.png',
+        title: "电商课程",
+        url: "../naming/naming"
+      },
+      {
+        imgPath: '../../images/douyin.png',
+        title: "自媒体课程",
+        url: "../naming/naming"
+      },
+      {
         imgPath: '../../images/fl-server.png',
         title: "法律服务",
         url: "../naming/naming"

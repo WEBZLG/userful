@@ -19,7 +19,7 @@
 	</view>
 	<van-skeleton row="3" loading="{{ loading }}">
 		<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
-			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onMagic" data-url="{{item.url}}">
+			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onServiceType" data-id="{{item.id}}">
 				<image style="width:50px; height: 50px;border-radius:50%" src="{{item.imgPath}}" />
 				<text class="nav-title">{{item.title}}</text>
 			</van-grid-item>
@@ -28,5 +28,7 @@
 	<view class="advertisement">
 		<van-image width="100%" height="100%" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599113253498&di=74ed259b542d5688252597d602ce89fe&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F2c60ab6d1508f04ff48c8e3ae2431fdba3e405c1109ca-4oPCmF_fw658" />
 	</view>
-	<van-cell title="推荐服务" value="内容" />
+	<van-cell title="推荐服务" value="" />
+	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
+	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
 </view>

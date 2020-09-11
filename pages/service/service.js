@@ -6,52 +6,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl:API.IMG_BASE_URL,//图片路径
+    imgUrl: API.IMG_BASE_URL, //图片路径
     background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
     indicatorDots: true,
     vertical: false,
-    autoplay: false,
+    autoplay: true,
     interval: 2000,
     duration: 500,
-    loading:true,
+    loading: true,
     iconNav: [{
         imgPath: '../../images/1.png',
         title: "工商财税",
-        url: "../magic/magic"
+        id: 0
       },
       {
         imgPath: '../../images/2.png',
         title: "人力资源",
-        url: "../naming/naming"
+        id: 1
       },
       {
         imgPath: '../../images/10.png',
         title: "知识产权",
-        url: "../naming/naming"
+        id: 2
       },
       {
         imgPath: '../../images/5.png',
         title: "税收筹划",
-        url: "../naming/naming"
-      },
-      {
-        imgPath: '../../images/8.png',
-        title: "企业印刷",
-        url: "../naming/naming"
-      },
-      {
-        imgPath: '../../images/7.png',
-        title: "办公家具",
-        url: "../naming/naming"
-      },
-      {
-        imgPath: '../../images/6.png',
-        title: "查看更多",
-        url: "../naming/naming"
+        id: 3
       }
     ]
   },
-
+  // 跳转服务类型
+  onServiceType(e) {
+    let type = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../serviceType/serviceType?type='+type,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -73,11 +64,11 @@ Page({
    */
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
-    this.getTabBar()) {
-    this.getTabBar().setData({
-      selected: 1
-    })
-  }
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
   },
 
   /**

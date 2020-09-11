@@ -1,0 +1,40 @@
+/* pages/serviceType/serviceType.wxss */
+.flex{
+  display: flex;
+}
+.right{
+  position: absolute;
+  left: 160rpx;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  border-left: 1px solid #f9f9f9;
+  background-color: #ffffff;
+}
+.van-sidebar-item {
+  padding: 20rpx !important;
+}
+.banner{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.caption{
+  border-left: 6rpx solid #EE6A08;
+  padding: 10rpx 20rpx;
+  margin:0 0 20rpx 20rpx;
+  font-weight: bold;
+  font-size: 14px;
+}
+.van-sidebar-item--selected{
+  border-left: 6rpx solid #EE6A08 !important;
+}
+.van-grid-item__content.van-grid-item__content{
+  font-size: 12px !important;
+  padding: 20rpx 10rpx !important;
+  background-color: #f9f9f9;
+}
+.type-list{
+  margin-bottom: 30rpx;
+}

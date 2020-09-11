@@ -1,4 +1,7 @@
 /* pages/service/service.wxss */
+page {
+  padding-bottom: 120rpx;
+} 
 .swiper-item{
   height: 400rpx;
 }
@@ -11,6 +14,10 @@
 .van-grid-item{
   margin-top: 30rpx;
 }
+.icon-nav{
+  background-color: #ffffff;
+  padding-bottom: 30rpx;
+}
 .caption-flex{
   display: flex;
   align-items: center;
@@ -18,10 +25,17 @@
   padding: 20rpx 0;
   color: #999999;
   border-bottom:1px solid #999999;
+  background-color: #ffffff;
 }
 .advertisement{
   height: 200rpx;
   margin:20rpx 30rpx;
   border-radius: 10rpx;
   overflow: hidden;
+}
+swiper{
+  height:400rpx;
+}
+.van-card{
+  background-color: #ffffff !important;
 }

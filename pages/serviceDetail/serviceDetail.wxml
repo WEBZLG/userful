@@ -1,0 +1,34 @@
+<!--pages/serviceDetail/serviceDetail.wxml-->
+<view>
+	<view class="banner">
+		<van-image width="100%" height="200" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+	</view>
+	<view class="padding-box">
+		<view>企业节税筹划</view>
+		<view class="price">￥200</view>
+	</view>
+	<van-cell-group border="{{false}}">
+		<van-cell title="类型:" custom-class="title">
+			<view class="type-item active">预付费</view>
+			<view class="type-item">预付费</view>
+			<view class="type-item">预付费</view>
+		</van-cell>
+		<van-cell title="地区:" is-link value="{{areaText}}" catchtap="showPopup" />
+		<van-cell value="查看更多" is-link>
+			<view slot="title" class="flex">
+				<view class="van-cell-text">服务:</view>
+				<view>平台自营</view>
+			</view>
+		</van-cell>
+	</van-cell-group>
+	<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
+		<van-area area-list="{{ areaList }}" bind:confirm="onConfirm" bind:cancel="onClose" columns-placeholder="{{ ['全国', '', ''] }}" />
+	</van-popup>
+	<view>
+		详情
+	</view>
+	<van-goods-action>
+		<van-goods-action-button text="电话咨询" type="warning" bind:click="onClickButton" />
+		<van-goods-action-button text="立即购买" bind:click="onClickButton" />
+	</van-goods-action>
+</view>

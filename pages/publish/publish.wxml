@@ -1,0 +1,28 @@
+<!--pages/publish/publish.wxml-->
+<view>
+	<view class="banner">
+		<van-image width="100%" height="200" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+	</view>
+	<view class="white-bg">
+		<view class="btn-box">
+			<van-button type="primary" block>点此订阅专栏</van-button>
+		</view>
+		<view class="person-desc">
+			<view class="title">王利芬成长社</view>
+			<view class="title-child">王利芬·优米创始人、赢在中国成长学院院长</view>
+			<view>读书读人读社会，开启省会上升通道。</view>
+			<view>王利芬45分钟左右个人音频产品。...</view>
+			<view class="view-more">查看全部</view>
+		</view>
+	</view>
+	<view class="white-bg">
+		<view class="heading">
+			<view class="text-left">更新至111集/共112集</view>
+			<view class="title">专栏目录</view>
+			<view class="text-right">正序</view>
+		</view>
+		<van-cell-group>
+			<van-cell center wx:for="{{9}}" title="1、致敬，传奇创业者马云" value="查看" label="2020-09-11" />
+		</van-cell-group>
+	</view>
+</view>

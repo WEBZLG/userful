@@ -1,7 +1,7 @@
 //封装请求函数
 const UTIL = require('./util.js')
-const API_BASE_URL = 'https://api-zhouyi.chengyue.online';//api地址
-const IMG_BASE_URL = 'https://images-zhouyi.chengyue.online';//图片地址
+const API_BASE_URL = 'https://api-qiye.chengyue.online'; //api地址
+const IMG_BASE_URL = 'https://images-qiye.chengyue.online'; //图片地址
 const request = (url, method,data,uid,token) => {
   let _url,loginToken;
   //获取登录token 判断如果有 用登录token否则用固定的token
@@ -41,6 +41,7 @@ const request = (url, method,data,uid,token) => {
         }
       },
       fail(error) {
+        console.log(error)
         reject(error)
         wx.showToast({
           title:error.data.message,

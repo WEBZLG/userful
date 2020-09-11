@@ -1,0 +1,38 @@
+/* pages/serviceDetail/serviceDetail.wxss */
+.banner{
+  width: 100%;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.padding-box{
+  padding:20rpx 30rpx;
+  line-height: 60rpx;
+}
+.price{
+  color: #EE6A08;
+  font-weight: bold;
+}
+.title .van-cell__title{
+  width: 50px;
+  flex:none;
+}
+.title .van-cell__value{
+  text-align: left;
+}
+.type-item{
+  display: inline-block;
+  color: #ffffff;
+  background-color: #6d6d6d;
+  padding: 0rpx 10rpx;
+  font-size: 12px;
+  margin: 4rpx;
+  border-radius: 10rpx;
+}
+.type-item.active{
+  background-color: #EE6A08;
+}
+.van-goods-action{
+  padding: 30rpx !important;
+}

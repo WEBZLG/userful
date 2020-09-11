@@ -1,6 +1,6 @@
 /**app.wxss**/
 page {
-  padding-bottom: 120rpx;
+  background-color: #F5F5F5;
 } 
 image{
   height: 100%;
