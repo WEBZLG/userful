@@ -6,7 +6,7 @@
 		<van-field value="{{ code }}" center clearable label="验证码" bindinput='getCodeValue' placeholder="请输入验证码" use-button-slot>
 			<van-button slot="button" size="small" type="info" round bindtap='getCode' disabled='{{disabled}}'>{{codename}}</van-button>
 		</van-field>
-		<van-field value="{{ invitationCode }}" label="邀请码" bindinput='getInvitationCode' placeholder="请输入邀请码（选填）" />
+		<!-- <van-field value="{{ invitationCode }}" label="邀请码" bindinput='getInvitationCode' placeholder="请输入邀请码（选填）" /> -->
 	</van-cell-group>
 	<view class="btn-box">
 		<van-button type="info" round catchtap="onRegist">注册</van-button>

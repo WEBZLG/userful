@@ -13,8 +13,14 @@
     "pages/business/business",
     "pages/businessDetail/businessDetail",
     "pages/serviceType/serviceType",
-    "pages/serviceDetail/serviceDetail"
-
+    "pages/serviceDetail/serviceDetail",
+    "pages/pubDetail/pubDetail",
+    "pages/changePhone/changePhone",
+    "pages/changePwd/changePwd",
+    "pages/certification/certification",
+    "pages/enterprise/enterprise",
+    "pages/enterpriseInfo/enterpriseInfo"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,26 +34,22 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "iconPath": "images/icon-xy1.png",
-        "selectedIconPath": "images/icon-xy2.png",
-        "text": "组件"
-      },
-      {
-        "pagePath": "pages/service/service",
-        "iconPath": "images/icon-qy1.png",
-        "selectedIconPath": "images/icon-qy2.png",
-        "text": "接口"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "iconPath": "images/icon-wd1.png",
-        "selectedIconPath": "images/icon-wd2.png",
-        "text": "我的"
-      }
-    ]
+    "list":[{
+      "pagePath": "pages/home/home",
+      "iconPath": "/images/icon-xy1.png",
+      "selectedIconPath": "/images/icon-xy2.png",
+      "text": "学院"
+    }, {
+      "pagePath": "pages/service/service",
+      "iconPath": "/images/icon-qy1.png",
+      "selectedIconPath": "/images/icon-qy2.png",
+      "text": "企服"
+    },{
+      "pagePath": "pages/my/my",
+      "iconPath": "/images/icon-wd1.png",
+      "selectedIconPath": "/images/icon-wd2.png",
+      "text": "我的"
+    }]
   },
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
@@ -73,7 +75,9 @@
     "van-sidebar-item": "@vant/weapp/sidebar-item/index",
     "van-goods-action": "@vant/weapp/goods-action/index",
     "van-goods-action-button": "@vant/weapp/goods-action-button/index",
-    "van-card": "@vant/weapp/card/index"
+    "van-card": "@vant/weapp/card/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
   "sitemapLocation": "sitemap.json"
 }

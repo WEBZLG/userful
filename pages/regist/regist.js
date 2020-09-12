@@ -57,8 +57,7 @@ Page({
           mobile: _this.data.phone,
           type: 'get_code',
           code: _this.data.code,
-          password: _this.data.password,
-          p_code: _this.data.invitationCode
+          password: _this.data.password
         })
         .then(res => {
           wx.showToast({
@@ -136,8 +135,8 @@ Page({
             title: res.message,
             icon: 'none'
           })
-          wx.setStorageSync('loginToken', res.data.data.login_token);
-          wx.setStorageSync('userInfo', res.data.data.user);
+          wx.setStorageSync('loginToken', res.data.login_token);
+          wx.setStorageSync('userInfo', res.data.user);
           wx.reLaunch({
             url: '../home/home',
           })

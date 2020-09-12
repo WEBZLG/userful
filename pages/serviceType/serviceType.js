@@ -1,4 +1,5 @@
 // pages/serviceType/serviceType.js
+const API = require('../../utils/api');
 Page({
 
   /**
@@ -6,39 +7,51 @@ Page({
    */
   data: {
     activeKey: 0,
-    iconNav: [{
-      title: "工商财税",
-      id: 0
-    },
-    {
-      title: "人力资源",
-      id: 1
-    },
-    {
-      title: "知识产权",
-      id: 2
-    },
-    {
-      title: "税收筹划",
-      id: 3
-    },
-  ]
+    servecrList: [],
+    phone:'',
   },
   // 类型切换
   onChange(event) {
-    console.log(event)
+    console.log(event.detail)
+    this.setData({
+      activeKey:event.detail
+    })
+    console.log(this.data.activeKey)
   },
   // 详情
-  onDetail(e){
+  onDetail(e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../serviceDetail/serviceDetail',
+      url: '../serviceDetail/serviceDetail?id='+id,
+    })
+  },
+  // 获取列表
+  getList() {
+    let _this = this
+    API.servicelList({}).then(res => {
+      console.log(res.data)
+      _this.setData({
+        servecrList: res.data.service_list,
+        phone:res.data.service_mobile
+      })
+    })
+  },
+  // 打电话
+  onPhone(e){
+    let phone = e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let type = options.type
+    this.setData({
+      activeKey: type
+    })
+    this.getList();
   },
 
   /**

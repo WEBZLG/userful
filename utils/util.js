@@ -13,28 +13,25 @@ const timestampToTime = timestamp => {
 }
 
 //数据加密
-const getMD5Sign = (params,token) => {
+const getMD5Sign = (params, token) => {
   if (typeof params == "string") {
-    return paramsStrSort(params,token);
+    return paramsStrSort(params, token);
   } else if (typeof params == "object") {
+    let newData = {};
+    Object.keys(params).sort().map(key => {
+      newData[key] = params[key]
+    })
     let arr = [];
-    for (let i in params) {
-      arr.push((i + "=" + params[i]));
+    for (let i in newData) {
+      arr.push((i + "=" + newData[i]));
     }
-    return paramsStrSort(arr.join(("&")),token);
+    if (token == undefined) {
+      return MD5(arr.join(("&"))).toUpperCase();
+    } else {
+      let newUrl = arr.join(("&")) + '&token=' + token;
+      return MD5(newUrl).toUpperCase();
+    }
   }
-}
-
-function paramsStrSort(paramsStr,token) {
-    let url = paramsStr ;
-    if(token==undefined){
-      let newUrl = url.split("&").sort().join("&");
-      return MD5(newUrl).toUpperCase();
-    }else{
-      let urlStr = url.split("&").sort().join("&");
-      let newUrl = urlStr + '&token=' + token;
-      return MD5(newUrl).toUpperCase();
-    }
 }
 
 // 加密调用
@@ -42,43 +39,45 @@ function paramsStrSort(paramsStr,token) {
 // var sign = getMD5Sign(paramsObj, timestamp, token);
 
 // 监察是否登录
-const checkLogin = () =>{
+const checkLogin = () => {
   let _this = this
   let userInfo = wx.getStorageSync('userInfo');
   console.log(userInfo)
-  if(userInfo==''||userInfo==undefined){
+  if (userInfo == '' || userInfo == undefined) {
     wx.redirectTo({
       url: '../login/login',
     })
-  }else{
-    API.isSignIn({},{uid:userInfo.user_id})
-    .then(res => {
-      if(res.message=='已登录'){
-        wx.setStorageSync('loginToken', res.data.login_token);
-        wx.setStorageSync('userInfo', res.data.user);
-        let url = e.currentTarget.dataset.url
-        wx.navigateTo({
-          url: url
-        })
-      }else{
-        wx.showToast({
-          title: 'res.message',
-          icon:"none"
-        })
-        setTimeout(() => {
-          wx.redirectTo({
-            url: '../login/login',
+  } else {
+    API.isSignIn({}, {
+        uid: userInfo.user_id
+      })
+      .then(res => {
+        if (res.message == '已登录') {
+          wx.setStorageSync('loginToken', res.data.login_token);
+          wx.setStorageSync('userInfo', res.data.user);
+          let url = e.currentTarget.dataset.url
+          wx.navigateTo({
+            url: url
           })
-        }, 3000);
-      }
-    })
+        } else {
+          wx.showToast({
+            title: 'res.message',
+            icon: "none"
+          })
+          setTimeout(() => {
+            wx.redirectTo({
+              url: '../login/login',
+            })
+          }, 3000);
+        }
+      })
   }
 }
 module.exports = {
   formatTime: formatTime,
   timestampToTime: timestampToTime,
   getMD5Sign: getMD5Sign,
-  checkLogin:checkLogin
+  checkLogin: checkLogin
 }
 
 const formatTime = date => {

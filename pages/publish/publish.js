@@ -1,18 +1,37 @@
 // pages/publish/publish.js
+const API = require('../../utils/api');
+// const AREA = require('../../utils/area');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    dataList:[]
   },
-
+  // 获取列表
+  getList(id) {
+    let _this = this
+    API.articelList({menu_id:id}).then(res => {
+      console.log(res)
+      _this.setData({
+        dataList:res.data.contents
+      })
+    })
+  },
+  // 查看详情
+  onDetail(e){
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../pubDetail/pubDetail?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let id = options.id
+    this.getList(id)
   },
 
   /**

@@ -2,22 +2,25 @@
 <view>
 	<view class="flex">
 		<van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-			<van-sidebar-item wx:for="{{iconNav}}" wx:key="index" title="{{item.title}}" />
+			<van-sidebar-item wx:for="{{servecrList}}" wx:key="index" title="{{item.service_name}}" />
 		</van-sidebar>
 		<view class="right">
-      <view class="banner">
-        <van-image width="100%" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-      </view>
-			<view class="type-list">
-				<view class="caption">公司注册</view>
-				<view class="child-list">
-					<van-grid column-num="3" gutter="{{ 10 }}">
-						<van-grid-item use-slot wx:for="{{ 4 }}" wx:key="index" catchtap="onDetail" >
-                有限公司注册
-            </van-grid-item>
-					</van-grid>
-				</view>
+			<view class="banner">
+				<van-image width="100%" height="100" src="/images/banner.png" />
 			</view>
+			<van-cell title="联系电话" is-link value="{{phone}}" data-phone="{{phone}}" catchtap="onPhone" />
+			<block wx:for="{{servecrList}}" wx:key="index" wx:if="{{(item.id-1)==activeKey}}">
+				<view class="type-list" wx:for="{{item.child_group}}" wx:for-item="group" wx:key="index">
+					<view class="caption">{{group.service_name}}</view>
+					<view class="child-list">
+						<van-grid column-num="3" gutter="{{ 10 }}">
+							<van-grid-item use-slot wx:for="{{ group.service_list }}" wx:for-item="child" wx:key="index" >
+								{{child.service_name}}
+							</van-grid-item>
+						</van-grid>
+					</view>
+				</view>
+			</block>
 		</view>
 	</view>
 

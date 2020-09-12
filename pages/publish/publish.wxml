@@ -1,9 +1,9 @@
 <!--pages/publish/publish.wxml-->
 <view>
 	<view class="banner">
-		<van-image width="100%" height="200" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+		<van-image width="100%" height="200" src="/images/banner.png" />
 	</view>
-	<view class="white-bg">
+	<!-- <view class="white-bg">
 		<view class="btn-box">
 			<van-button type="primary" block>点此订阅专栏</van-button>
 		</view>
@@ -14,15 +14,16 @@
 			<view>王利芬45分钟左右个人音频产品。...</view>
 			<view class="view-more">查看全部</view>
 		</view>
-	</view>
+	</view> -->
 	<view class="white-bg">
-		<view class="heading">
+		<!-- <view class="heading">
 			<view class="text-left">更新至111集/共112集</view>
 			<view class="title">专栏目录</view>
 			<view class="text-right">正序</view>
-		</view>
+		</view> -->
 		<van-cell-group>
-			<van-cell center wx:for="{{9}}" title="1、致敬，传奇创业者马云" value="查看" label="2020-09-11" />
+			<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}" value="查看" label="{{item.create}}" data-id="{{item.id}}" catchtap="onDetail"/>
 		</van-cell-group>
+		<van-empty  wx:if="{{dataList.length==0}}" description="暂无数据" />
 	</view>
 </view>

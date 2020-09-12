@@ -26,7 +26,7 @@
 		</van-grid>
 	</van-skeleton>
 	<view class="advertisement">
-		<van-image width="100%" height="100%" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599113253498&di=74ed259b542d5688252597d602ce89fe&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F2c60ab6d1508f04ff48c8e3ae2431fdba3e405c1109ca-4oPCmF_fw658" />
+		<van-image width="100%" height="100%" src="/images/banner.png" />
 	</view>
 	<van-cell title="推荐服务" value="" />
 	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
