@@ -1,0 +1,7 @@
+/* pages/changePhone/changePhone.wxss */
+.btn-box{
+  margin: 30rpx;
+}
+.van-button--info {
+  width: 100%;
+}

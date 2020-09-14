@@ -1,0 +1,26 @@
+/* pages/release/release.wxss */
+.section textarea {
+  height: 180rpx !important;
+  width: 100%;
+  font-size: 14px;
+  background-color: #ffffff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.section{
+  margin: 30rpx;
+}
+.van-uploader{
+  margin:0 30rpx;
+}
+.btn-box{
+  margin: 30rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+}
+.van-button--info {
+  width: 100%;
+}

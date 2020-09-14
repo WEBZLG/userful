@@ -1,20 +1,29 @@
 // pages/businessDetail/businessDetail.js
+const API = require('../../utils/api');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    content:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let id = options.id
+    this.getDetail(id)
   },
-
+  getDetail(id){
+    API.businessDetail({},id).then(res=>{
+      console.log(res)
+      this.setData({
+        content:res.data.contents
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

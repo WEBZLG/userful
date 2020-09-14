@@ -1,29 +1,37 @@
 <!--pages/business/business.wxml-->
 <view>
-	<van-cell custom-class="flex">
-		<view slot="title" class="user-box" catchtap="onCard">
-			<view class="van-cell-text">
-				<van-image width="30" height="30" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
-			</view>
-			<view class="user-info">
-				<view class="user-name">某某某</view>
-				<view class="user-unit">某某公司高管</view>
-			</view>
-		</view>
-		<view>
-			<van-button round size="mini" type="info">谈合作</van-button>
-		</view>
-	</van-cell>
-	<view class="business-msg">
-		<view class="pic-box"  catchtap="onBusinessDetail">
-			<view class="business-con">各位老板早上好！我公司承接各类型小程序！有需要联系~</view>
-			<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
-				<van-grid-item use-slot wx:for="{{ 5 }}" wx:for-item="index" wx:key="index">
-					<view class="pic-item">
-						<van-image width="100%" height="100%" show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+	<block wx:for="{{dataList}}" wx:key="index">
+		<view catchtap="onCard" data-id="{{item.id}}">
+			<van-cell custom-class="flex">
+				<view slot="title" class="user-box">
+					<view class="van-cell-text">
+						<van-image width="30" height="30" round show-loading src="{{item.head_img==''?'/images/head.png':item.head_img}}" />
 					</view>
-				</van-grid-item>
-			</van-grid>
+					<view class="user-info">
+						<view class="user-name">{{item.info.real_name}}({{item.info.post}})</view>
+						<view class="user-unit">{{item.info.company}}</view>
+					</view>
+				</view>
+				<!-- <view>
+				<van-button round size="mini" type="info">谈合作</van-button>
+			</view> -->
+			</van-cell>
+			<view class="business-msg">
+				<view class="pic-box">
+					<view class="business-con">{{item.business.content}}</view>
+					<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
+						<van-grid-item use-slot wx:for="{{ item.business.image }}" wx:key="index">
+							<view class="pic-item">
+								<van-image width="100%" height="100%" show-loading src="{{imgUrl+item}}" />
+							</view>
+						</van-grid-item>
+					</van-grid>
+					<view class="user-box address">
+						<view>{{item.info.province}}{{item.info.city}}{{item.info.area}}{{item.info.address}}</view>
+						<view>{{item.business.created_at}}</view>
+					</view>
+				</view>
+			</view>
 		</view>
-	</view>
+	</block>
 </view>

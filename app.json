@@ -19,8 +19,10 @@
     "pages/changePwd/changePwd",
     "pages/certification/certification",
     "pages/enterprise/enterprise",
-    "pages/enterpriseInfo/enterpriseInfo"
-    
+    "pages/enterpriseInfo/enterpriseInfo",
+    "pages/myBusiness/myBusiness",
+    "pages/personal/personal",
+    "pages/release/release"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -34,22 +36,26 @@
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list":[{
-      "pagePath": "pages/home/home",
-      "iconPath": "/images/icon-xy1.png",
-      "selectedIconPath": "/images/icon-xy2.png",
-      "text": "学院"
-    }, {
-      "pagePath": "pages/service/service",
-      "iconPath": "/images/icon-qy1.png",
-      "selectedIconPath": "/images/icon-qy2.png",
-      "text": "企服"
-    },{
-      "pagePath": "pages/my/my",
-      "iconPath": "/images/icon-wd1.png",
-      "selectedIconPath": "/images/icon-wd2.png",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "/images/icon-xy1.png",
+        "selectedIconPath": "/images/icon-xy2.png",
+        "text": "学院"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "iconPath": "/images/icon-qy1.png",
+        "selectedIconPath": "/images/icon-qy2.png",
+        "text": "企服"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "/images/icon-wd1.png",
+        "selectedIconPath": "/images/icon-wd2.png",
+        "text": "我的"
+      }
+    ]
   },
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",

@@ -1,0 +1,12 @@
+<!--pages/release/release.wxml-->
+<view>
+	<view class="section">
+		<textarea bindblur="bindTextAreaBlur" auto-height placeholder="说点什么" />
+		</view>
+  <view>
+    <van-uploader file-list="{{ fileList }}" multiple="{{true}}" max-count="9"  deletable="{{ true }}" bind:after-read="afterRead"  bind:delete="deleteImg"/>
+  </view>
+  	<view class="btn-box">
+		<van-button type="info" round catchtap="onRelease">发布商机</van-button>
+	</view>
+</view>

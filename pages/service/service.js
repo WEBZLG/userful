@@ -30,9 +30,14 @@ Page({
         id: 2
       },
       {
-        imgPath: '../../images/5.png',
-        title: "税收筹划",
+        imgPath: '../../images/8.png',
+        title: "许可资质代办",
         id: 3
+      },
+      {
+        imgPath: '../../images/3.png',
+        title: "法律服务",
+        id: 4
       }
     ]
   },

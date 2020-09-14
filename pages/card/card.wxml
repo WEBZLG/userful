@@ -1,19 +1,19 @@
 <!--pages/card/card.wxml-->
 <view>
-  <view class="card-bg">
-    <image src="../../images/mp_bg.png"></image>
-    <view class="card-text">
-      <van-image width="80" height="80" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
-      <view class="card-user">
-        <view class="name">姓名</view>
-        <view>公司</view>
-        <view>地区</view>
-      </view>
-    </view>
-  </view>
-  <van-cell title="发布的商机"  />
-  <view class="publish">
-    		<van-cell custom-class="flex">
+	<view class="card-bg">
+		<image src="../../images/mp_bg.png"></image>
+		<view class="card-text">
+			<van-image width="80" height="80" round show-loading src="{{content.head_img==''?'/images/head.png':content.head_img}}" />
+			<view class="card-user">
+				<view class="name">{{content.info.real_name}}</view>
+				<view>{{content.info.company}}</view>
+				<view>{{content.info.province}}{{content.info.city}}{{content.info.area}}{{content.info.address}}</view>
+			</view>
+		</view>
+	</view>
+	<van-cell title="发布的商机" />
+	<view class="publish">
+		<!-- <van-cell custom-class="flex">
 			<view slot="title" class="user-box" catchtap="onCard">
 				<view class="van-cell-text">
 					<van-image width="30" height="30" round show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -26,18 +26,19 @@
 			<view>
 				<van-button round size="mini" type="info">谈合作</van-button>
 			</view>
-		</van-cell>
-		<view class="business-msg">
-			<view class="pic-box" catchtap="onBusinessDetail">
-				<view class="business-con">各位老板早上好！我公司承接各类型小程序！有需要联系~</view>
+		</van-cell> -->
+		<view class="business-msg" wx:for="{{content.business}}" wx:key="{{index}}">
+			<view class="pic-box">
+				<view class="business-con">{{item.content}}</view>
 				<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
-					<van-grid-item use-slot wx:for="{{ 5 }}" wx:for-item="index" wx:key="index">
+					<van-grid-item use-slot wx:for="{{ item.image }}" wx:for-item="img" wx:key="index">
 						<view class="pic-item">
-							<van-image width="100%" height="100%" show-loading src="https://img.yzcdn.cn/vant/cat.jpeg" />
+							<van-image width="100%" height="100%" show-loading src="{{imgUrl+img}}" />
 						</view>
 					</van-grid-item>
 				</van-grid>
+				<view class="user-box">{{item.created_at}}发布</view>
 			</view>
 		</view>
-  </view>
+	</view>
 </view>

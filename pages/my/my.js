@@ -36,6 +36,18 @@ Page({
       url: '../enterprise/enterprise',
     })
   },
+  // 跳转我的商机
+  goBusiness(){
+    wx.navigateTo({
+      url: '../myBusiness/myBusiness',
+    })
+  },
+  // 跳转个人信息
+  goPersonal(){
+    wx.navigateTo({
+      url: '../personal/personal',
+    })
+  },
   // 更换头像
   afterRead(event) {
     let _this = this
@@ -140,6 +152,12 @@ Page({
               case '5':
                 _this.goEnterprise()
                 break;
+              case '6':
+              _this.goBusiness()
+              break;
+              case '7':
+              _this.goPersonal()
+              break;
             }
           } else {
             wx.showToast({

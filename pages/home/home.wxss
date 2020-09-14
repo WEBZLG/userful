@@ -40,6 +40,9 @@ page {
 .caption {
   font-weight: bold;
 }
+.caption .van-cell__value{
+  color: #333333;
+}
 .van-grid-item__content{
   padding: 0 !important;
 }

@@ -18,7 +18,7 @@
 		<view>售后保障</view>
 	</view>
 	<van-skeleton row="3" loading="{{ loading }}">
-		<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
+		<van-grid column-num="5" border="{{ false }}" custom-class="icon-nav">
 			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onServiceType" data-id="{{item.id}}">
 				<image style="width:50px; height: 50px;border-radius:50%" src="{{item.imgPath}}" />
 				<text class="nav-title">{{item.title}}</text>

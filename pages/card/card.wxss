@@ -69,6 +69,7 @@
   padding: 0 !important;
 }
 .business-con{
+  font-size: 14px;
   padding:0 20rpx 20rpx;
 }
 .icon-nav{

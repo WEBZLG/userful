@@ -15,8 +15,8 @@
       <view>2020-09-02发布</view>
     </view>
 	</van-cell>
-  <view class="bottom-btn">
+  <!-- <view class="bottom-btn">
     <van-button custom-class="new-btn" round type="primary" size="small">递名片</van-button>
     <van-button custom-class="new-btn" round type="info" size="small">谈合作</van-button>
-  </view>
+  </view> -->
 </view>

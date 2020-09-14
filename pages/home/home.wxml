@@ -26,6 +26,5 @@
 	</van-skeleton>
 	<!-- <van-divider /> -->
 	<van-cell title="每日一课" value="商机" link-type="navigateTo" url="/pages/business/business" custom-class="caption" />
-	<van-cell center title="性格外向的人一定适合创业吗？" label="2020-06-24" />
-	<van-cell center title="面对强监管，创业者该如何应对" label="2020-06-24" />
+	<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}" label="{{item.create}}" catchtap="onArticle" data-id="{{item.id}}" is-link/>
 </view>
