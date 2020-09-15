@@ -22,12 +22,14 @@
     "pages/enterpriseInfo/enterpriseInfo",
     "pages/myBusiness/myBusiness",
     "pages/personal/personal",
-    "pages/release/release"
+    "pages/release/release",
+    "pages/sysMessage/sysMessage",
+    "pages/sysDetail/sysDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -83,7 +85,13 @@
     "van-goods-action-button": "@vant/weapp/goods-action-button/index",
     "van-card": "@vant/weapp/card/index",
     "van-uploader": "@vant/weapp/uploader/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-panel": "@vant/weapp/panel/index"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "位置信息将用于小程序位置接口的效果展示"
+    }
+  }
 }

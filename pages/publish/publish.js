@@ -51,8 +51,12 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id
+    let title = options.title
     this.setData({
       id:id
+    })
+    wx.setNavigationBarTitle({
+      title: title
     })
     this.getList(id,1)
   },

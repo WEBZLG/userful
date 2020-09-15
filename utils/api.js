@@ -226,9 +226,9 @@ module.exports = {
   changePhone: (data) => {
     return request('/user/update', 'post', data)
   },
-  //实名
-  certification: (data) => {
-    return request('/user/real', 'post', data)
+  //完善信息
+  person: (data) => {
+    return request('/user/update', 'post', data)
   },
   // 单图上传
   uploadImg: (param, path) => {
@@ -262,7 +262,7 @@ module.exports = {
   businessDetail: (data, id) => {
     return request('/business/detail/' + id, 'post', data, true, true)
   },
-  // 商机详情
+  // 我的商机
   myBusiness: (data) => {
     return request('/user_business/get', 'post', data)
   },
@@ -273,5 +273,13 @@ module.exports = {
     // 删除商机
   myBusinessDelete: (data) => {
     return request('/user_business/delete', 'post', data)
+  },
+  // 系统消息
+  sysMessage: (data) => {
+    return request('/message/get', 'post', data)
+  },
+    // 系统消息详情
+  sysDetail: (data,id) => {
+    return request('/message/detail/'+id, 'post', data)
   }
 }

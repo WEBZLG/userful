@@ -20,7 +20,9 @@ Page({
     fileList: [],
     id: '',
     content: '',
-    newCertificate: []
+    urlArray: [],//网络地址变量
+    pathArray: [],//本地地址变量
+    storeList:[]//图片中间变量
   },
   bindTextArea: function (e) {
     this.setData({
@@ -33,7 +35,8 @@ Page({
     let _this = this
     let idx = index.detail.index
     this.setData({
-      fileList: _this.data.fileList.delete(idx)
+      fileList: _this.data.fileList.delete(idx),
+      storeList: _this.data.storeList.delete(idx)
     })
   },
   // 选择图片后本地地址
@@ -41,7 +44,8 @@ Page({
     console.log(event.detail.file)
     let _this = this
     this.setData({
-      fileList: _this.data.fileList.concat(event.detail.file)
+      fileList: _this.data.fileList.concat(event.detail.file),
+      storeList:_this.data.storeList.concat(event.detail.file)
     })
   },
   // 发布/修改商机
@@ -60,7 +64,7 @@ Page({
       API.myBusinessSet({
         id: id,
         content: content,
-        image: JSON.stringify(_this.data.newCertificate)
+        image: JSON.stringify(_this.data.urlArray)
       }).then(res => {
         wx.showToast({
           title: res.message
@@ -72,19 +76,30 @@ Page({
         }, 1500);
       })
     } else {
+      _this.data.storeList.forEach(element => {
+        if (element.url) {
+          _this.setData({
+            urlArray: _this.data.urlArray.concat(element.url)
+          })
+        } else {
+          _this.setData({
+            pathArray: _this.data.pathArray.concat(element)
+          })
+        }
+      });
       API.uploadImgs({
         'file_name': 'image'
-      }, _this.data.fileList).then(res => {
+      }, _this.data.pathArray).then(res => {
         res.forEach(element => {
           console.log(element)
           _this.setData({
-            newCertificate: _this.data.newCertificate.concat(element.data.path)
+            urlArray: _this.data.urlArray.concat(element.data.path)
           })
         });
         API.myBusinessSet({
           id: id,
           content: content,
-          image: JSON.stringify(_this.data.newCertificate)
+          image: JSON.stringify(_this.data.urlArray)
         }).then(res => {
           wx.showToast({
             title: res.message
@@ -102,12 +117,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let item = JSON.parse(options.item)
-    console.log(item)
-    this.setData({
-      content:item.content,
-      fileList:item.image
-    })
+    let _this = this
+    if (options.item) {
+      let item = JSON.parse(options.item)
+      let imgUrl = this.data.imgUrl
+      let newImage = []
+      if (item.image.length > 0) {
+        item.image.forEach(element => {
+          newImage.push({
+            url: imgUrl + element
+          })
+          _this.setData({
+            storeList:_this.data.storeList.concat({
+              url: element
+            })
+          })
+        });
+      }
+      this.setData({
+        content: item.content,
+        fileList: newImage,
+        id:1
+      })
+    }
   },
 
   /**
@@ -155,7 +187,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

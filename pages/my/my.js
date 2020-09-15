@@ -48,6 +48,17 @@ Page({
       url: '../personal/personal',
     })
   },
+  // 打电话
+  getPhone(){
+    wx.makePhoneCall({
+      phoneNumber: '18745042089',
+    })
+  },
+  getSysmsg(){
+    wx.navigateTo({
+      url: '../sysMessage/sysMessage',
+    })
+  },
   // 更换头像
   afterRead(event) {
     let _this = this
@@ -55,15 +66,13 @@ Page({
     let userInfo = wx.getStorageSync('userInfo');
     let param = {
       change_type: "head",
-      head_img: file.path,
-      user_id: userInfo.user_id
+      user_id: userInfo.user_id,
     }
-    //获取的当前时间戳（10位）
+    // //获取的当前时间戳（10位）
     param.timestamp = Math.round(new Date().getTime() / 1000).toString();
     let token = wx.getStorageSync('loginToken');
     //通过md5加密验签
     param.sign = UTIL.getMD5Sign(param, token)
-    console.log(param)
     wx.uploadFile({
       url: API.API_BASE_URL + '/user/update',
       filePath: file.path,
@@ -76,7 +85,7 @@ Page({
           title: data.message,
         })
         _this.setData({
-          ['userInfo.head_img']: data.head_img
+          ['userInfo.head_img']: data.data.head_img
         })
         wx.setStorageSync('userInfo', _this.data.userInfo)
       },

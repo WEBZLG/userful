@@ -90,7 +90,7 @@ Page({
         })
       })
   },
-  // 列表
+  // 列表跳转
   onArticle(e) {
     let _this = this
     let userInfo = wx.getStorageSync('userInfo');
@@ -107,8 +107,9 @@ Page({
             wx.setStorageSync('loginToken', res.data.login_token);
             wx.setStorageSync('userInfo', res.data.user);
             let id = e.currentTarget.dataset.id
+            let title = e.currentTarget.dataset.title
             wx.navigateTo({
-              url: '../publish/publish?id=' + id
+              url: '../publish/publish?id=' + id+'&title='+title
             })
           } else {
             wx.showToast({
@@ -258,6 +259,7 @@ Page({
   onShow: function () {
     this.getCarouselData() //轮播
     this.getList() //每日一课
+    this.getUserLocation();
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({

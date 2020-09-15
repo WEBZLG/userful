@@ -2,9 +2,15 @@
 .van-field__input{
   text-align: right !important;
 }
-.btn-box{
-  margin: 30rpx;
-}
+
 .van-button--info {
   width: 100%;
+}
+.btn-box{
+  padding: 30rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
 }

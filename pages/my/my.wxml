@@ -3,10 +3,10 @@
 	<view class="user-bg">
 		<image src="../../images/my_bg.png"></image>
 		<view class="user-box">
-			<van-uploader bind:after-read="afterRead" wx:if="{{userInfo.head_img}}">
-				<van-image  width="100" height="100" round fit="cover" show-loading src="{{imgUrl+userInfo.head_img}}" />
+			<van-uploader bind:after-read="afterRead">
+				<van-image  width="100" height="100"  wx:if="{{userInfo.head_img}}" round fit="cover" show-loading src="{{imgUrl+userInfo.head_img}}" />
+				<van-image wx:else width="100" height="100" round fit="cover" show-loading src="/images/chengyue.png" />
 			</van-uploader>
-			<van-image wx:else width="100" height="100" round fit="cover" show-loading src="/images/chengyue.png" />
 			<view wx:if="{{userInfo}}">{{userInfo.nickname||userInfo.mobile}}</view>
 			<view wx:else catchtap="onLogin">登录</view>
 		</view>
@@ -21,6 +21,8 @@
 			<van-cell title="修改手机" is-link  data-type="1" catchtap="getMessge"/>
 			<van-cell title="修改密码" is-link  data-type="2" catchtap="getMessge"/>
 			<van-cell title="我的商机" is-link  data-type="6" catchtap="getMessge"/>
+			<van-cell title="系统消息" is-link  catchtap="getSysmsg"/>
+			<van-cell title="联系客服" is-link  catchtap="getPhone"/>
 			<!-- <van-cell wx:if="{{userInfo.role3==''}}" title="企业认证" is-link  data-type="4" catchtap="getMessge"/>
 			<van-cell wx:if="{{userInfo.role3!=''&&userInfo.role3.status==0}}" title="企业资料" value="未审核" is-link />
 			<van-cell wx:if="{{userInfo.role3!=''&&userInfo.role3.status==1}}" title="企业资料"  is-link   data-type="5" catchtap="getMessge"/>

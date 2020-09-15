@@ -17,7 +17,7 @@
 	</view>
 	<van-skeleton row="3" loading="{{ loading }}">
 		<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
-			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onArticle" data-id="{{item.id}}">
+			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onArticle" data-id="{{item.id}}" data-title="{{item.title}}">
 				<image style="width:50px; height: 50px;border-radius:50px" src="{{item.imgPath}}" />
 				<!-- <van-image width="50px" height="50px" round  show-loading src="{{item.imgPath}}" /> -->
 				<text class="nav-title">{{item.title}}</text>
@@ -26,5 +26,5 @@
 	</van-skeleton>
 	<!-- <van-divider /> -->
 	<van-cell title="每日一课" value="商机" link-type="navigateTo" url="/pages/business/business" custom-class="caption" />
-	<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}" label="{{item.create}}" catchtap="onArticle" data-id="{{item.id}}" is-link/>
+	<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}" label="{{item.create}}" catchtap="onArticle" data-id="{{item.id}}"  data-title="每日一课" is-link/>
 </view>
