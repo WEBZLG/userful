@@ -8,7 +8,7 @@ const request = (url, method, data, noToken, noUid) => {
   let userToken = wx.getStorageSync('loginToken');
   let loginToken = noToken == true ? '$10$Xmd/LvGEoHInQ4ISXisPJOm54ULeCFU82WgDyyM5U2j2WfO3rND2K' : userToken;
   // 获取用户id
-  if (noUid == ''||noUid == undefined) {
+  if (noUid == '' || noUid == undefined) {
     let userInfoId = wx.getStorageSync('userInfo').user_id;
     data.user_id = userInfoId
   }
@@ -21,7 +21,7 @@ const request = (url, method, data, noToken, noUid) => {
       title: '加载中',
     })
     wx.request({
-      url:API_BASE_URL+url,
+      url: API_BASE_URL + url,
       method: method,
       data: data,
       header: {
@@ -215,7 +215,7 @@ module.exports = {
   isSignIn: (data, uid) => {
     console.log(data)
     console.log(uid)
-    return request('/check_login/'+uid.uid, 'post', data, true, true)
+    return request('/check_login/' + uid.uid, 'post', data, true, true)
   },
 
   //修改密码
@@ -244,23 +244,34 @@ module.exports = {
   },
   // 文章列表
   articelList: (data) => {
-    return request('/content/get', 'post', data,true,true)
+    return request('/content/get', 'post', data, true, true)
   },
   // 文章详情
-  articelDetail: (data,aid) => {
-    return request('/content/detail/'+aid, 'post', data,true,true)
+  articelDetail: (data, aid) => {
+    return request('/content/detail/' + aid, 'post', data, true, true)
   },
   // 服务列表
   servicelList: (data) => {
-    return request('/service/get', 'post', data,true,true)
+    return request('/service/get', 'post', data, true, true)
   },
   // 商机列表
   businessList: (data) => {
-    return request('/business/get', 'post', data,true,true)
+    return request('/business/get', 'post', data, true, true)
   },
   // 商机详情
-  businessDetail: (data,id) => {
-    return request('/business/detail/'+id, 'post', data,true,true)
+  businessDetail: (data, id) => {
+    return request('/business/detail/' + id, 'post', data, true, true)
+  },
+  // 商机详情
+  myBusiness: (data) => {
+    return request('/user_business/get', 'post', data)
+  },
+  // 发布商机
+  myBusinessSet: (data) => {
+    return request('/user_business/set', 'post', data)
+  },
+    // 删除商机
+  myBusinessDelete: (data) => {
+    return request('/user_business/delete', 'post', data)
   }
-  
 }

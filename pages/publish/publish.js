@@ -90,6 +90,9 @@ Page({
    */
   onPullDownRefresh: function () {
     let id = this.data.id
+    this.setData({
+      page:1
+    })
     this.getList(id,1)
     wx.stopPullDownRefresh();
   },

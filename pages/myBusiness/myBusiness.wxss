@@ -5,6 +5,8 @@
   font-size: 10px;
   line-height: 14px;
   color: #999999;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
 }
 .user-info{
   margin-left: 20rpx;
@@ -21,6 +23,7 @@
 }
 .pic-box{
   margin: 20rpx 10rpx;
+  background-color: #ffffff;
 }
 .pic-item{
   width: 100%;
@@ -35,19 +38,27 @@
   padding: 0 !important;
 }
 .business-con{
-  padding:0 20rpx 20rpx;
+  padding: 20rpx;
+  font-size: 14px;
+
 }
 .icon-nav{
   margin: 20rpx 0;
 }
 .btn-box{
-  margin: 30rpx;
+  padding: 30rpx;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  
+  background-color: #ffffff;
 }
 .van-button--info {
   width: 100%;
+}
+.container{
+  padding-bottom: 148rpx;
+}
+.change-btn{
+  margin-left: 30rpx;
 }

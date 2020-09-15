@@ -16,34 +16,98 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrl:API.IMG_BASE_URL,
+    imgUrl: API.IMG_BASE_URL,
     fileList: [],
+    id: '',
+    content: '',
+    newCertificate: []
   },
-  bindTextAreaBlur: function(e) {
-    console.log(e.detail.value)
+  bindTextArea: function (e) {
+    this.setData({
+      content: e.detail.value
+    })
   },
-    // 删除图片
-    deleteImg(index) {
-      console.log(index)
-      let _this = this
-      let idx = index.detail.index
-      this.setData({
-        fileList: _this.data.fileList.delete(idx)
+  // 删除图片
+  deleteImg(index) {
+    console.log(index)
+    let _this = this
+    let idx = index.detail.index
+    this.setData({
+      fileList: _this.data.fileList.delete(idx)
+    })
+  },
+  // 选择图片后本地地址
+  afterRead(event) {
+    console.log(event.detail.file)
+    let _this = this
+    this.setData({
+      fileList: _this.data.fileList.concat(event.detail.file)
+    })
+  },
+  // 发布/修改商机
+  onRelease() {
+    let _this = this
+    let id = this.data.id
+    let content = this.data.content
+    if (content == '') {
+      wx.showToast({
+        title: '请输入内容',
+        icon: 'none'
       })
-    },
-    // 选择图片后本地地址
-    afterRead(event) {
-      console.log(event.detail.file)
-      let _this = this
-      this.setData({
-        fileList: _this.data.fileList.concat(event.detail.file)
+      return false
+    }
+    if (_this.data.fileList.length == 0) {
+      API.myBusinessSet({
+        id: id,
+        content: content,
+        image: JSON.stringify(_this.data.newCertificate)
+      }).then(res => {
+        wx.showToast({
+          title: res.message
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 0,
+          })
+        }, 1500);
       })
-    },
+    } else {
+      API.uploadImgs({
+        'file_name': 'image'
+      }, _this.data.fileList).then(res => {
+        res.forEach(element => {
+          console.log(element)
+          _this.setData({
+            newCertificate: _this.data.newCertificate.concat(element.data.path)
+          })
+        });
+        API.myBusinessSet({
+          id: id,
+          content: content,
+          image: JSON.stringify(_this.data.newCertificate)
+        }).then(res => {
+          wx.showToast({
+            title: res.message
+          })
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 0,
+            })
+          }, 1500);
+        })
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let item = JSON.parse(options.item)
+    console.log(item)
+    this.setData({
+      content:item.content,
+      fileList:item.image
+    })
   },
 
   /**
