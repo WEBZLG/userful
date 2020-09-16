@@ -1,6 +1,6 @@
 <!--pages/home/home.wxml-->
 <view>
-	<van-cell title="当前位置" is-link value="{{areaText}}" arrow-direction="down" catchtap="showPopup" />
+	<van-cell title="当前位置"  icon="location-o" custom-class="address" is-link value="{{areaText}}" arrow-direction="down" catchtap="showPopup" />
 	<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose">
 		<van-area area-list="{{ areaList }}" bind:confirm="onConfirm" bind:cancel="onClose" />
 	</van-popup>

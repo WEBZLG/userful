@@ -50,6 +50,8 @@ Page({
     wx.showModal({
       title: '删除商机',
       content: '确定要删除该商机？',
+      cancelColor:'#EE6A08',//取消文字的颜色
+      confirmColor: '#2DBFB2',//确定文字的颜色
       success: function (res) {
         if (res.cancel) {
           //点击取消,默认隐藏弹框

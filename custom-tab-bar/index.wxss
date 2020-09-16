@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   height: 48px;
-  background: white;
+  background: #2DBFB2;
   display: flex;
   font-size: 14px;
   padding-bottom: env(safe-area-inset-bottom);
@@ -27,6 +27,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #2DBFB2 !important;
 }
 
 .tab-bar-item .over-img {

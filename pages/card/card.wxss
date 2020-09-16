@@ -3,6 +3,7 @@
   position: relative;
   height: 400rpx;
   width: 100%;
+  background: linear-gradient(0, rgb(138, 219, 229), rgba(45, 191, 178, 1));
 }
 
 .card-text {

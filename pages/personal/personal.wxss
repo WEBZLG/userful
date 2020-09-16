@@ -14,3 +14,7 @@
   bottom: 0;
   background-color: #ffffff;
 }
+.van-button--info{
+  background-color: #2DBFB2 !important;
+  border: 1px solid #2DBFB2 !important;
+}

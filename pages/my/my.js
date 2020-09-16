@@ -51,6 +51,8 @@ Page({
   // 打电话
   getPhone(){
     wx.makePhoneCall({
+      cancelColor:'#EE6A08',//取消文字的颜色
+      confirmColor: '#2DBFB2',//确定文字的颜色
       phoneNumber: '18745042089',
     })
   },
@@ -96,6 +98,8 @@ Page({
     let _this = this
     wx.showModal({
       title: '提示',
+      cancelColor:'#EE6A08',//取消文字的颜色
+      confirmColor: '#2DBFB2',//确定文字的颜色
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {

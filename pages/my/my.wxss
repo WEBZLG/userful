@@ -26,4 +26,6 @@
 }
 .van-button--info {
   width: 100%;
+  border: 1px solid #2DBFB2 !important;
+  color: #2DBFB2 !important;
 }

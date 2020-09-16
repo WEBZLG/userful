@@ -14,7 +14,7 @@
 				<view class="user-box">
 					<view>{{item.created_at}}</view>
 					<view class="flex">
-						<view data-id="{{item.id}}" catchtap="onDelete">删除</view>
+						<view class="delete-btn" data-id="{{item.id}}" catchtap="onDelete">删除</view>
 						<view class="change-btn" data-item="{{item}}" catchtap="onChange">修改</view>
 					</view>
 				</view>

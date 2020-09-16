@@ -60,3 +60,11 @@ page {
 swiper{
   height:400rpx;
 }
+.address{
+  background-color: #2DBFB2 !important;
+  color: #ffffff !important;
+}
+.address .van-cell__value,
+.van-icon-arrow-down{
+  color: #ffffff;
+}

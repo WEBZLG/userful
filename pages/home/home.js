@@ -21,7 +21,7 @@ Page({
     areaText: '',//地址
     dataList:[],//每日一课
     iconNav: [{
-        imgPath: '../../images/10.png',
+        imgPath: '../../images/xueyuan.png',
         title: "儒商学院",
         id: 1
       }, {
@@ -37,7 +37,7 @@ Page({
         title: "企业管理",
         id: 4
       }, {
-        imgPath: '../../images/4.png',
+        imgPath: '../../images/anli.png',
         title: "行业案例",
         id: 5
       },
@@ -215,7 +215,6 @@ Page({
           longitude: longitude,
           areaText: city + area
         })
-        _this.getMaster('1', _this.data.province, _this.data.city, _this.data.area)
       },
       fail: function (res) {},
       complete: function (res) {}

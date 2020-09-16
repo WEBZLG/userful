@@ -1,7 +1,6 @@
 <!--pages/card/card.wxml-->
 <view>
 	<view class="card-bg">
-		<image src="../../images/mp_bg.png"></image>
 		<view class="card-text">
 			<van-image width="80" height="80" round show-loading src="{{content.head_img==''?'/images/head.png':content.head_img}}" />
 			<view class="card-user">
@@ -27,7 +26,7 @@
 				<van-button round size="mini" type="info">谈合作</van-button>
 			</view>
 		</van-cell> -->
-		<view class="business-msg" wx:for="{{content.business}}" wx:key="{{index}}">
+		<view class="business-msg" wx:for="{{content.business}}" wx:key="index">
 			<view class="pic-box">
 				<view class="business-con">{{item.content}}</view>
 				<van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
@@ -40,5 +39,6 @@
 				<view class="user-box">{{item.created_at}}发布</view>
 			</view>
 		</view>
+		<van-empty wx:if="{{content.business.length==0}}" description="暂无发布的商机" />
 	</view>
 </view>
