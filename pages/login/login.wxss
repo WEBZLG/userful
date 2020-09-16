@@ -34,14 +34,19 @@ van-button {
 .forget-pwd {
   font-size: 14px;
   text-align: right;
-  padding: 0 30rpx;
-  color: #277CFB;
+  padding: 30rpx 30rpx 0;
+  color: #2DBFB2;
 }
 .regist-btn{
-  color: #277CFB;
+  color: #2DBFB2;
 }
 .regist-box{
   text-align: center;
   margin-top: 50rpx;
   font-size: 14px;  
+}
+.van-button--info{
+  width: 100%;
+  background-color: #2DBFB2 !important;
+  border: 1px solid #2DBFB2 !important;
 }

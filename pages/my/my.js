@@ -56,9 +56,16 @@ Page({
       phoneNumber: '18745042089',
     })
   },
+  // 系统消息
   getSysmsg(){
     wx.navigateTo({
       url: '../sysMessage/sysMessage',
+    })
+  },
+  // 用户协议
+  getAgreement(){
+    wx.navigateTo({
+      url: '../agreement/agreement',
     })
   },
   // 更换头像

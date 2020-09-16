@@ -2,6 +2,17 @@
 .btn-box{
   margin: 30rpx;
 }
-.van-button--info {
+.van-button--info{
   width: 100%;
+  background-color: #2DBFB2 !important;
+  border: 1px solid #2DBFB2 !important;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 30rpx 30rpx 0;
+}
+.agreement{
+  color: #2DBFB2;
 }

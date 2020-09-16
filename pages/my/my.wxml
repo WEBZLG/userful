@@ -23,6 +23,7 @@
 			<van-cell title="我的商机" is-link  data-type="6" catchtap="getMessge"/>
 			<van-cell title="系统消息" is-link  catchtap="getSysmsg"/>
 			<van-cell title="联系客服" is-link  catchtap="getPhone"/>
+			<van-cell title="用户协议" is-link  catchtap="getAgreement"/>
 			<!-- <van-cell wx:if="{{userInfo.role3==''}}" title="企业认证" is-link  data-type="4" catchtap="getMessge"/>
 			<van-cell wx:if="{{userInfo.role3!=''&&userInfo.role3.status==0}}" title="企业资料" value="未审核" is-link />
 			<van-cell wx:if="{{userInfo.role3!=''&&userInfo.role3.status==1}}" title="企业资料"  is-link   data-type="5" catchtap="getMessge"/>

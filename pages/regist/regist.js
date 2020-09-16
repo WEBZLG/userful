@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    checked: true,
     phone: '', //手机号
     password: '', //密码
     code: '', //验证码
@@ -32,6 +33,12 @@ Page({
   getInvitationCode(e) {
     this.setData({
       code: e.detail
+    })
+  },
+  // 协议
+  onAgreement(){
+    wx.navigateTo({
+      url: '../agreement/agreement',
     })
   },
   //获取验证码
@@ -86,20 +93,23 @@ Page({
         })
     }
   },
-
+  // 阅读协议
+  onChange(event) {
+    this.setData({
+      checked: event.detail,
+    });
+  },
   //提交表单信息
   onRegist() {
     let myreg = /^(14[0-9]|13[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9])\d{8}$$/;
     let _this = this
-    if (this.data.password == "") {
+    if(_this.data.checked==false){
       wx.showToast({
-        title: '密码不能为空',
-        icon: 'none',
-        duration: 1000
+        title: '注册前请阅读用户协议并勾选',
+        icon:'none'
       })
       return false;
-    }
-    if (this.data.phone == "") {
+    }else if (this.data.phone == "") {
       wx.showToast({
         title: '手机号不能为空',
         icon: 'none',
