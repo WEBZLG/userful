@@ -40,6 +40,7 @@
   font-size: 10px;
   line-height: 14px;
   color: #999999;
+  padding:20rpx 30rpx 0;
 }
 .user-info{
   margin-left: 20rpx;
@@ -55,7 +56,9 @@
   font-weight: bold;
 }
 .pic-box{
-  margin: 20rpx 10rpx;
+  margin: 20rpx 0rpx;
+  background: #ffffff;
+  padding: 30rpx 0;  
 }
 .pic-item{
   width: 100%;

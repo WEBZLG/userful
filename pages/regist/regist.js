@@ -137,7 +137,8 @@ Page({
           type: '',
           code: _this.data.code,
           password: _this.data.password,
-          p_code: ''
+          p_code: '',
+          agreement:1
         })
         .then(res => {
           console.log(res)

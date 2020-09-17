@@ -15,6 +15,16 @@ Page({
       url: '../release/release',
     })
   },
+  //图片预览事件
+  imgView: function (e) {
+    var src = e.currentTarget.dataset.url;//获取data-src
+    var imgList = [e.currentTarget.dataset.url];//获取data-list
+    //图片预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: imgList // 需要预览的图片http链接列表
+    })
+  },
   // 获取列表
   getList(page) {
     let _this = this

@@ -1,5 +1,6 @@
 // pages/card/card.js
 const API = require('../../utils/api');
+const { array } = require('../../utils/md5');
 Page({
 
   /**
@@ -15,7 +16,21 @@ Page({
   //     url: '../businessDetail/businessDetail',
   //   })
   // },
-
+  //图片预览事件
+  imgView: function (e) {
+    let _this = this
+    let src = this.data.imgUrl+e.currentTarget.dataset.img[0];//获取data-src
+    let imgList = e.currentTarget.dataset.img;//获取data-list
+    let imgLists = new Array()
+    imgList.forEach(element => {
+      imgLists.push(_this.data.imgUrl+element)
+    });
+    //图片预览
+    wx.previewImage({
+      current:src, // 当前显示图片的http链接
+      urls: imgLists // 需要预览的图片http链接列表
+    })
+  },
   getDetail(id){
     API.businessDetail({},id).then(res=>{
       console.log(res)

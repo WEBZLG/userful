@@ -1,11 +1,11 @@
 <!--pages/business/business.wxml-->
 <view>
 	<block wx:for="{{dataList}}" wx:key="index">
-		<view catchtap="onCard" data-id="{{item.id}}">
+		<view class="item" catchtap="onCard" data-id="{{item.id}}">
 			<van-cell custom-class="flex">
 				<view slot="title" class="user-box">
 					<view class="van-cell-text">
-						<van-image width="30" height="30" round show-loading src="{{item.head_img==''?'/images/head.png':item.head_img}}" />
+						<van-image width="30" height="30" round show-loading src="{{item.head_img==''?'/images/head.png':imgUrl+item.head_img}}" />
 					</view>
 					<view class="user-info">
 						<view class="user-name">{{item.info.real_name}}({{item.info.post}})</view>

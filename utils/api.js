@@ -29,8 +29,8 @@ const request = (url, method, data, noToken, noUid) => {
       },
       success(request) {
         if (request.statusCode == '200') {
-          resolve(request.data)
           wx.hideLoading()
+          resolve(request.data)
         } else if (request.statusCode == '401') {
           wx.hideLoading()
           if (request.data.message == "您当前不是会员或会员已过期，请开通会员后再访问") {
@@ -55,8 +55,8 @@ const request = (url, method, data, noToken, noUid) => {
               icon: 'none'
             })
             setTimeout(() => {
-              wx.navigateBack({
-                delta: 0,
+              wx.redirectTo({
+                url: '../login/login',
               })
             }, 1500);
           }
@@ -213,8 +213,6 @@ module.exports = {
   },
   //检验是否登录
   isSignIn: (data, uid) => {
-    console.log(data)
-    console.log(uid)
     return request('/check_login/' + uid.uid, 'post', data, true, true)
   },
 
@@ -248,7 +246,7 @@ module.exports = {
   },
   // 文章详情
   articelDetail: (data, aid) => {
-    return request('/content/detail/' + aid, 'post', data, true, true)
+    return request('/content/detail_by_id/' + aid, 'post', data, true, true)
   },
   // 服务列表
   servicelList: (data) => {
@@ -281,5 +279,9 @@ module.exports = {
     // 系统消息详情
   sysDetail: (data,id) => {
     return request('/message/detail/'+id, 'post', data)
+  },
+  // 用户协议
+  agreement(data,id){
+    return request('/content/detail_by_menu/'+id, 'post', data, true, true)
   }
 }

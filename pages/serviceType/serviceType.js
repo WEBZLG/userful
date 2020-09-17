@@ -8,21 +8,26 @@ Page({
   data: {
     activeKey: 0,
     servecrList: [],
-    phone:'',
+    phone: '',
+    loading: true
   },
   // 类型切换
   onChange(event) {
-    console.log(event.detail)
     this.setData({
-      activeKey:event.detail
+      activeKey: event.detail,
+      loading: true
     })
-    console.log(this.data.activeKey)
+    setTimeout(() => {
+      this.setData({
+        loading: false
+      })
+    }, 1000);
   },
   // 详情
   onDetail(e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../serviceDetail/serviceDetail?id='+id,
+      url: '../serviceDetail/serviceDetail?id=' + id,
     })
   },
   // 获取列表
@@ -32,12 +37,12 @@ Page({
       console.log(res.data)
       _this.setData({
         servecrList: res.data.service_list,
-        phone:res.data.service_mobile
+        phone: res.data.service_mobile
       })
     })
   },
   // 打电话
-  onPhone(e){
+  onPhone(e) {
     let phone = e.currentTarget.dataset.phone
     wx.makePhoneCall({
       phoneNumber: phone,
@@ -58,7 +63,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    setTimeout(() => {
+      this.setData({
+        loading: false
+      })
+    }, 1500);
   },
 
   /**

@@ -6,22 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content:''
+    content: ''
   },
   getList() {
     let _this = this
-    API.articelList({
-      menu_id:10,
-      page:1,
-      page_size:15
-    }).then(res => {
-      console.log(res.data.contents[0].id)
-      let id = res.data.contents[0].id
-      API.articelDetail({},id).then(res => {
-        console.log(res)
-        _this.setData({
-          content:res.data.content
-        })
+    API.agreement({}, 10).then(res => {
+      _this.setData({
+        content: res.data.content
       })
     })
   },

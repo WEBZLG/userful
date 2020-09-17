@@ -20,7 +20,8 @@
   font-weight: bold;
 }
 .pic-box{
-  margin: 20rpx 10rpx;
+  background-color: #ffffff;
+  padding: 20rpx 10rpx;
 }
 .pic-item{
   width: 100%;
@@ -35,6 +36,7 @@
   padding: 0 !important;
 }
 .business-con{
+  font-size: 14px;
   padding:0 20rpx 20rpx;
 }
 .icon-nav{
@@ -42,5 +44,8 @@
 }
 .address{
   justify-content: space-between;
-  padding: 0 30rpx;
+  padding: 20rpx 30rpx 0;
+}
+.item{
+  margin-bottom: 20rpx;
 }

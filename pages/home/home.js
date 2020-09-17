@@ -120,7 +120,7 @@ Page({
               wx.redirectTo({
                 url: '../login/login',
               })
-            }, 3000);
+            }, 1500);
           }
         })
     }
