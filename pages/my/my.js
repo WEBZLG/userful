@@ -299,13 +299,13 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '易启诚学',
+      title: '企业管理',
       path: '/page/home/home'
     }
   },
   onShareTimeline(res){
     return {
-      title: '易启诚学'
+      title: '企业管理'
     }
   }
 })
