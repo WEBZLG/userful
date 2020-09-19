@@ -22,7 +22,7 @@ Page({
     dataList:[],//每日一课
     iconNav: [{
         imgPath: '../../images/xueyuan.png',
-        title: "儒商学院",
+        title: "国学商道",
         id: 1
       }, {
         imgPath: '../../images/jc-icon.png',
@@ -55,6 +55,11 @@ Page({
         imgPath: '../../images/douyin.png',
         title: "自媒体课程",
         id: 8
+      },
+      {
+        imgPath: '../../images/wangzhuan.png',
+        title: "网赚项目",
+        id: 11
       }
     ]
   },

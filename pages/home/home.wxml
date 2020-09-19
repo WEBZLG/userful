@@ -16,7 +16,7 @@
 		</swiper>
 	</view>
 	<van-skeleton row="3" loading="{{ loading }}">
-		<van-grid column-num="4" border="{{ false }}" custom-class="icon-nav">
+		<van-grid column-num="5" border="{{ false }}" custom-class="icon-nav">
 			<van-grid-item use-slot wx:for="{{ iconNav }}" wx:key="id" catchtap="onArticle" data-id="{{item.id}}" data-title="{{item.title}}">
 				<image style="width:50px; height: 50px;border-radius:50px" src="{{item.imgPath}}" />
 				<!-- <van-image width="50px" height="50px" round  show-loading src="{{item.imgPath}}" /> -->
