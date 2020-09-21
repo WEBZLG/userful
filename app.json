@@ -25,7 +25,8 @@
     "pages/release/release",
     "pages/sysMessage/sysMessage",
     "pages/sysDetail/sysDetail",
-    "pages/agreement/agreement"
+    "pages/agreement/agreement",
+    "pages/online/online"
   ],
   "window": {
     "backgroundTextStyle": "light",

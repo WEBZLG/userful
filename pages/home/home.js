@@ -29,10 +29,6 @@ Page({
         title: "创业基础",
         id: 2
       }, {
-        imgPath: '../../images/cz-icon.png',
-        title: "创业进阶",
-        id: 3
-      }, {
         imgPath: '../../images/qy-server.png',
         title: "企业管理",
         id: 4
@@ -113,9 +109,15 @@ Page({
             wx.setStorageSync('userInfo', res.data.user);
             let id = e.currentTarget.dataset.id
             let title = e.currentTarget.dataset.title
-            wx.navigateTo({
-              url: '../publish/publish?id=' + id+'&title='+title
-            })
+            if(id==11){
+              wx.navigateTo({
+                url: '../online/online',
+              })
+            }else{
+              wx.navigateTo({
+                url: '../publish/publish?id=' + id+'&title='+title
+              })
+            }
           } else {
             wx.showToast({
               title: 'res.message',
