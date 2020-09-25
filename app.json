@@ -26,12 +26,13 @@
     "pages/sysMessage/sysMessage",
     "pages/sysDetail/sysDetail",
     "pages/agreement/agreement",
+    "pages/myRecommend/myRecommend",
     "pages/online/online"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2DBFB2",
-    "navigationBarTitleText": "众智诚商学院",
+    "navigationBarTitleText": "商云社",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

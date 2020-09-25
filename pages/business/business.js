@@ -11,7 +11,7 @@ Page({
   },
   // 名片
   onCard(e) {
-    console.log(e)
+    //console.log(e)
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '../card/card?id='+id,
@@ -29,7 +29,7 @@ Page({
     API.businessList({
       page: page
     }).then(res => {
-      console.log(res)
+      //console.log(res)
       if (page == 1) {
         _this.setData({
           dataList: res.data.users

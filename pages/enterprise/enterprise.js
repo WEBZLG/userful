@@ -121,7 +121,7 @@ Page({
                     'file_name': 'certificate'
                   }, _this.data.pathArray).then(res => {
                     res.forEach(element => {
-                      console.log(element)
+                      //console.log(element)
                       _this.setData({
                         urlArray: _this.data.urlArray.concat(element.data.path)
                       })
@@ -176,7 +176,7 @@ Page({
             'file_name': 'certificate'
           }, certificate).then(res => {
             res.forEach(element => {
-              //console.log(element)
+              ////console.log(element)
               _this.setData({
                 newCertificate: _this.data.newCertificate.concat(element.data.path)
               })
@@ -208,7 +208,7 @@ Page({
 
   // 删除图片
   deleteImg(index) {
-    console.log(index)
+    //console.log(index)
     let _this = this
     let idx = index.detail.index
     this.setData({
@@ -251,7 +251,7 @@ Page({
   onLoad: function (options) {
     let _this = this
     let userInfo = wx.getStorageSync('userInfo').role3
-    console.log(userInfo)
+    //console.log(userInfo)
     let newCertificate = []
     if (userInfo != '') {
       _this.setData({
@@ -261,7 +261,7 @@ Page({
         let imgArray = JSON.parse(userInfo.certificate)
         let imgUrl = _this.data.imgUrl
         imgArray.forEach(element => {
-          console.log(element)
+          //console.log(element)
           newCertificate.push({
             url: imgUrl + element
           })

@@ -31,7 +31,7 @@ Page({
   },
   // 删除图片
   deleteImg(index) {
-    console.log(index)
+    //console.log(index)
     let _this = this
     let idx = index.detail.index
     this.setData({
@@ -41,7 +41,7 @@ Page({
   },
   // 选择图片后本地地址
   afterRead(event) {
-    console.log(event.detail.file)
+    //console.log(event.detail.file)
     let _this = this
     this.setData({
       fileList: _this.data.fileList.concat(event.detail.file),
@@ -91,7 +91,7 @@ Page({
         'file_name': 'image'
       }, _this.data.pathArray).then(res => {
         res.forEach(element => {
-          console.log(element)
+          //console.log(element)
           _this.setData({
             urlArray: _this.data.urlArray.concat(element.data.path)
           })

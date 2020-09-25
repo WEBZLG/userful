@@ -31,7 +31,7 @@ Page({
     API.myBusiness({
       page: page
     }).then(res => {
-      console.log(res)
+      //console.log(res)
       if (page == 1) {
         _this.setData({
           dataList: res.data.business
@@ -85,7 +85,7 @@ Page({
   // 修改商机
   onChange(e){
     let item = e.currentTarget.dataset.item
-    console.log(item)
+    //console.log(item)
     item = JSON.stringify(item)
     wx.navigateTo({
       url: '../release/release?item='+item,

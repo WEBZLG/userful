@@ -107,20 +107,21 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     var that = this;
+    let code =  wx.getStorageSync('userInfo').p_code;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
+      //console.log(res.target)
     }
     return {
-      title: '企业管理',
-      path: '/pages/home/home'
+      title: '商云社',
+      path: '/page/home/home?p='+code
     }
   },
-  onShareTimeline(res) {
+  onShareTimeline(res){
     return {
-      title: '企业管理'
+      title: '商云社'
     }
   }
 })

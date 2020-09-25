@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     let userInfo = JSON.parse(options.userInfo)
-    console.log(userInfo)
+    //console.log(userInfo)
     this.setData({
       userInfo:userInfo
     })

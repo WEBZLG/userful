@@ -21,6 +21,7 @@
 			<van-cell title="修改手机" is-link  data-type="1" catchtap="getMessge"/>
 			<van-cell title="修改密码" is-link  data-type="2" catchtap="getMessge"/>
 			<van-cell title="我的商机" is-link  data-type="6" catchtap="getMessge"/>
+			<van-cell title="我的推荐" is-link  data-type="3" catchtap="getMessge"/>
 			<van-cell title="系统消息" is-link  catchtap="getSysmsg"/>
 			<van-cell title="联系客服" is-link  catchtap="getPhone"/>
 			<van-cell title="用户协议" is-link  catchtap="getAgreement"/>

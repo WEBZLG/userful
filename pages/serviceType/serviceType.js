@@ -34,7 +34,7 @@ Page({
   getList() {
     let _this = this
     API.servicelList({}).then(res => {
-      console.log(res.data)
+      //console.log(res.data)
       _this.setData({
         servecrList: res.data.service_list,
         phone: res.data.service_mobile

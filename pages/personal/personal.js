@@ -95,7 +95,7 @@ Page({
         area:area,
         address:address
       }).then(res=>{
-        console.log(res)
+        //console.log(res)
         wx.showToast({
           title: res.message,
         })
@@ -135,7 +135,7 @@ Page({
   onLoad: function (options) {
     let _this = this
     let userInfo = wx.getStorageSync('userInfo').info
-    console.log(userInfo)
+    //console.log(userInfo)
     if(userInfo){
       this.setData({
         province: userInfo.province,

@@ -68,7 +68,7 @@ const request = (url, method, data, noToken, noUid) => {
         }
       },
       fail(error) {
-        console.log(error)
+        //console.log(error)
         if (error.errMsg) {
           wx.showToast({
             title: error.errMsg,
@@ -97,7 +97,7 @@ const uploadImg = (param, path) => {
     let token = '$10$Xmd/LvGEoHInQ4ISXisPJOm54ULeCFU82WgDyyM5U2j2WfO3rND2K';
     //通过md5加密验签
     param.sign = UTIL.getMD5Sign(param, token)
-    console.log(param)
+    //console.log(param)
     wx.uploadFile({
       url: API_BASE_URL + '/upload_img',
       filePath: path,
@@ -106,7 +106,7 @@ const uploadImg = (param, path) => {
       success(res) {
         let data = JSON.parse(res.data)
         resolve(data)
-        console.log(data)
+        //console.log(data)
       },
       fail(error) {
         reject(error)
@@ -142,7 +142,7 @@ const uploadImgs = (param, tempFilePaths) => {
             resolve(JSON.parse(res.data))
           },
           fail(err) {
-            console.log(err)
+            //console.log(err)
             wx.hideLoading()
           }
         })
@@ -271,6 +271,10 @@ module.exports = {
     // 删除商机
   myBusinessDelete: (data) => {
     return request('/user_business/delete', 'post', data)
+  },
+  // 获取我的推荐
+  myRecommend: (data) => {
+    return request('/user/report', 'post', data)
   },
   // 系统消息
   sysMessage: (data) => {

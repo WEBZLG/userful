@@ -85,7 +85,7 @@ Page({
     let _this = this
     API.carousel({})
       .then(res => {
-        console.log(res)
+        //console.log(res)
         _this.setData({
           background: res.data.carousels
         })
@@ -197,7 +197,7 @@ Page({
         _this.getLocal(latitude, longitude)
       },
       fail: function (res) {
-        //console.log('fail' + JSON.stringify(res))
+        ////console.log('fail' + JSON.stringify(res))
       }
     })
   },
@@ -210,7 +210,7 @@ Page({
         longitude: longitude
       },
       success: function (res) {
-        //console.log('getLocal')
+        ////console.log('getLocal')
         let province = res.result.ad_info.province
         let city = res.result.ad_info.city
         let area = res.result.ad_info.district
@@ -233,9 +233,9 @@ Page({
     API.articelList({
       menu_id: 9,
       page:1,
-      page_size:5
+      page_size:10
     }).then(res => {
-      console.log(res)
+      //console.log(res)
       _this.setData({
         dataList: res.data.contents
       })
@@ -245,6 +245,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this;
+    if (options.scene) {
+      const scene = decodeURIComponent(options.scene)
+      var code = scene.split('=')[1]
+      wx.setStorageSync('p_code', code);
+    }
+    if(options.p){
+      let code = options.p
+      wx.setStorageSync('p_code', code);
+    }
     qqmapsdk = new QQMapWX({
       key: 'OQYBZ-GMQKD-X3I4Q-H4YNU-3TDQ5-PWFAQ' //自己的key秘钥
     });
@@ -307,20 +317,21 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     var that = this;
+    let code =  wx.getStorageSync('userInfo').p_code;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
+      //console.log(res.target)
     }
     return {
-      title: '企业管理',
-      path: '/pages/home/home'
+      title: '商云社',
+      path: '/page/home/home?p='+code
     }
   },
-  onShareTimeline(res) {
+  onShareTimeline(res){
     return {
-      title: '企业管理'
+      title: '商云社'
     }
   }
 })

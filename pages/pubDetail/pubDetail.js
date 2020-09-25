@@ -12,7 +12,7 @@ Page({
   getDetail(id) {
     let _this = this
     API.articelDetail({},id).then(res => {
-      console.log(res)
+      //console.log(res)
       _this.setData({
         dataList:res.data.content
       })

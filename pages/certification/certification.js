@@ -34,7 +34,7 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        //console.log(res)
+        ////console.log(res)
         if (e.target.dataset.type == '1') {
           _this.setData({
             faceImg: res.tempFiles[0].path,
@@ -96,7 +96,7 @@ Page({
       API.uploadImg({
         'file_name': 'card_pic1'
       }, param.card_pic1).then(res => {
-        //console.log(res)
+        ////console.log(res)
         _this.setData({
           card_pic1: res.data.path
         })
@@ -114,7 +114,7 @@ Page({
           }
           API.certification(param)
             .then(res => {
-              //console.log(res)
+              ////console.log(res)
               wx.showToast({
                 title: res.message,
                 icon:'none'

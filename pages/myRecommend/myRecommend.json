@@ -1,6 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "商云社学院",
+  "navigationBarTitleText": "我的推荐",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "backgroundColor": "#eeeeee"

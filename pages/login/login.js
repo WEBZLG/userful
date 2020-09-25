@@ -52,7 +52,7 @@ Page({
           password: _this.data.password,
         })
         .then(res => {
-          console.log(res)
+          //console.log(res)
           wx.showToast({
             title: res.message,
             icon: 'none'

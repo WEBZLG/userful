@@ -42,6 +42,12 @@ Page({
       url: '../myBusiness/myBusiness',
     })
   },
+  // 跳转我的推荐
+  goMyRecommend() {
+    wx.navigateTo({
+      url: '../myRecommend/myRecommend',
+    })
+  },
   // 跳转个人信息
   goPersonal(){
     wx.navigateTo({
@@ -88,7 +94,7 @@ Page({
       name: 'head_img',
       formData: param,
       success(res) {
-        console.log(res)
+        //console.log(res)
         let data = JSON.parse(res.data)
         wx.showToast({
           title: data.message,
@@ -115,7 +121,7 @@ Page({
               user_id: _this.data.userInfo.user_id,
             }, token)
             .then(res => {
-              //console.log(res)
+              ////console.log(res)
               wx.showToast({
                 title: res.message,
                 icon: 'none'
@@ -128,7 +134,7 @@ Page({
               }, 3000);
             })
         } else if (sm.cancel) {
-          //console.log('用户点击取消')
+          ////console.log('用户点击取消')
         }
       }
     })
@@ -207,7 +213,7 @@ Page({
           uid: userInfo.user_id
         })
         .then(res => {
-          console.log(res)
+          //console.log(res)
           if (res.message == '已登录') {
             wx.setStorageSync('loginToken', res.data.login_token);
             wx.setStorageSync('userInfo', res.data.user);
@@ -294,18 +300,19 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
+    let code =  wx.getStorageSync('userInfo').p_code;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
+      //console.log(res.target)
     }
     return {
-      title: '企业管理',
-      path: '/page/home/home'
+      title: '商云社',
+      path: '/page/home/home?p='+code
     }
   },
   onShareTimeline(res){
     return {
-      title: '企业管理'
+      title: '商云社'
     }
   }
 })

@@ -64,7 +64,8 @@ Page({
           mobile: _this.data.phone,
           type: 'get_code',
           code: _this.data.code,
-          password: _this.data.password
+          password: _this.data.password,
+          p_code:''
         })
         .then(res => {
           wx.showToast({
@@ -137,11 +138,11 @@ Page({
           type: '',
           code: _this.data.code,
           password: _this.data.password,
-          p_code: '',
+          p_code: _this.data.invitationCode,
           agreement:1
         })
         .then(res => {
-          console.log(res)
+          //console.log(res)
           wx.showToast({
             title: res.message,
             icon: 'none'

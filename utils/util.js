@@ -42,7 +42,7 @@ const getMD5Sign = (params, token) => {
 const checkLogin = () => {
   let _this = this
   let userInfo = wx.getStorageSync('userInfo');
-  console.log(userInfo)
+  //console.log(userInfo)
   if (userInfo == '' || userInfo == undefined) {
     wx.redirectTo({
       url: '../login/login',
