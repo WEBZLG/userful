@@ -29,6 +29,7 @@
 		<van-image width="100%" height="100%" src="/images/banner.png" />
 	</view>
 	<van-cell title="推荐服务" value="" />
-	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
-	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
+	<van-empty  description="暂无推荐" />
+	<!-- <van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" />
+	<van-card  price="2.00" desc="量身定制节税方案，提升收入不用愁3%起" title="节税筹划" thumb="https://img.yzcdn.cn/vant/ipad.jpeg" /> -->
 </view>

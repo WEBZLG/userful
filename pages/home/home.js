@@ -91,8 +91,22 @@ Page({
         })
       })
   },
+  onArticle(e){
+    let id = e.currentTarget.dataset.id
+    let title = e.currentTarget.dataset.title
+    if(id==11){
+      wx.navigateTo({
+        url: '../online/online',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../publish/publish?id=' + id+'&title='+title
+      })
+    }
+  },
+
   // 列表跳转
-  onArticle(e) {
+  onArticles(e) {
     let _this = this
     let userInfo = wx.getStorageSync('userInfo');
     if (userInfo == '' || userInfo == undefined) {
@@ -245,6 +259,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     let _this = this;
     if (options.scene) {
       const scene = decodeURIComponent(options.scene)
@@ -320,13 +335,16 @@ Page({
   onShareAppMessage: function (res) {
     var that = this;
     let code =  wx.getStorageSync('userInfo').p_code;
+    if(code==undefined){
+      code=""
+    }
     if (res.from === 'button') {
       // 来自页面内转发按钮
       //console.log(res.target)
     }
     return {
       title: '商云社',
-      path: '/page/home/home?p='+code
+      path: '/pages/home/home?p='+code
     }
   },
   onShareTimeline(res){

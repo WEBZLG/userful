@@ -52,7 +52,7 @@ Page({
           type: 'get_code',
           code: _this.data.code,
           password: _this.data.password,
-          p_code: _this.data.invitationCode
+          p_code: ''
         })
         .then(res => {
           wx.showToast({
@@ -191,7 +191,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

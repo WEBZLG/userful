@@ -3,7 +3,9 @@
 	<view class="login-bg">
 		<image src="../../images/denglu_bg.png"></image>
 		<view class="logo-box">
-			logo
+			<view class="logo">
+				<image  src="../../images/logo.png"></image>
+			</view>
 		</view>
 	</view>
 	<van-cell-group border="{{ false }}">

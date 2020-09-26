@@ -1,0 +1,73 @@
+/* pages/shareOnline/shareOnline.wxss */
+.banner{
+  width: 100%;
+}
+.btn-box{
+  padding: 30rpx;
+}
+.white-bg{
+  background-color: #ffffff;
+}
+.person-desc{
+  padding: 0 30rpx 10rpx;
+  margin-bottom: 30rpx;
+  color: #333333;
+  font-size: 14px;
+  line-height: 28px;
+}
+.title{
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+.title-child{
+  font-size: 12px;
+}
+.view-more{
+  font-size: 12px;
+  color: #999999;
+  text-align: center;
+}
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:20rpx 30rpx;
+  text-align: center;
+  font-size: 10px;
+  color: #999999;
+}
+.heading view{
+  flex:1;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.canvas{
+  width: 600rpx;
+  height: 600rpx;
+  display: none;
+}
+.intro{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(0, 0, 0, .6);
+}
+.img-box{
+  width: 600rpx;
+  height: 600rpx;
+  margin: 20% auto 0;
+}
+.btn-box{
+  width: 600rpx;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+}

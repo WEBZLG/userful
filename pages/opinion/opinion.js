@@ -1,43 +1,41 @@
-// pages/serviceDetail/serviceDetail.js
+// pages/opinion/opinion.js
 const API = require('../../utils/api');
-const AREA = require('../../utils/area');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    show: false,
-    areaList: AREA.default,
-    loading: true,
-    areaText: '全国',
+    content:''
   },
-  showPopup() {
+  onTextarea(e){
     this.setData({
-      show: true
-    });
+      content:e.detail.value
+    })
   },
-
-  onClose() {
-    this.setData({
-      show: false
-    });
-  },
-
-  onConfirm(e) {
-    if (e.detail.values[0].code == '') {
-      this.setData({
-        areaText: '全国'
+  onSubmit(){
+    let value = this.data.content;
+    var len = parseInt(value.length)
+    if(len==0){
+      wx.showToast({
+        title: '请输入内容',
+        icon:'none'
       })
-    } else {
-      this.setData({
-        areaText: e.detail.values[1].name + e.detail.values[2].name
+      return false;
+    }else{
+      API.opinion({
+        content:value
+      }).then(res=>{
+        wx.showToast({
+          title: res.message,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 0,
+          })
+        }, 1000);
       })
     }
-    this.onClose();
-  },
-  onClickButton() {
-
   },
   /**
    * 生命周期函数--监听页面加载

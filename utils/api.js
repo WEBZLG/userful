@@ -185,12 +185,84 @@ const getImageAll = (image_src) => {
   })
   return Promise.all(all)
 }
+// 保存图片到相册
+const savePicture = (tempFilePath,showFun) => {
+  let _this = this
+  wx.saveImageToPhotosAlbum({
+    filePath: tempFilePath,
+    success(res) {
+      wx.showModal({
+        content: '图片已保存到相册，赶紧晒一下吧~',
+        showCancel: false,
+        confirmText: '好的',
+        confirmColor: '#333',
+        success: function (res) {
+          if (res.confirm) {
+            showFun()
+          }
+        },
+        fail: function (res) {
+          showFun()
+        }
+      })
+    },
+    fail: function (err) {
+      if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+        //console.log("当初用户拒绝，再次发起授权")
+        wx.showModal({
+          content: '是否打开权限设置？',
+          showCancel: false,
+          confirmText: '好的',
+          confirmColor: '#333',
+          success: function (res) {
+            if (res.confirm) {
+              wx.openSetting({
+                success(settingdata) {
+                  //console.log(settingdata)
+                  if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                    wx.showToast({
+                      title: '点击保存到相册按钮',
+                      mask: true,
+                      icon: "none"
+                    })
+                  } else {
+                    wx.showToast({
+                      title: '拒绝权限，无法保存图片',
+                      mask: true,
+                      icon: "none"
+                    })
+                    setTimeout(() => {
+                      showFun()
+                    }, 2000);
+                  }
+                }
+              })
+            }
+          },
+          fail: function (res) {
+            showFun()
+          }
+        })
+      } else if (err.errMsg == "saveImageToPhotosAlbum:fail:auth denied") {
+        wx.showToast({
+          title: '拒绝权限，无法保存图片',
+          mask: true,
+          icon: "none"
+        })
+        setTimeout(() => {
+          showFun()
+        }, 2000);
+      }
+    }
+  })
+}
 // 结果api
 module.exports = {
   IMG_BASE_URL,
   API_BASE_URL,
   getImage,
   getImageAll,
+  savePicture,
   // 注册
   regist: (data) => {
     return request('/register', 'post', data, true, true)
@@ -201,7 +273,7 @@ module.exports = {
   },
   // 重置密码
   resetPwd: (data) => {
-    return request('/reset_pass', 'post', data)
+    return request('/reset_pass', 'post', data, true, true)
   },
   // 轮播图
   carousel: (data) => {
@@ -268,7 +340,7 @@ module.exports = {
   myBusinessSet: (data) => {
     return request('/user_business/set', 'post', data)
   },
-    // 删除商机
+  // 删除商机
   myBusinessDelete: (data) => {
     return request('/user_business/delete', 'post', data)
   },
@@ -280,12 +352,16 @@ module.exports = {
   sysMessage: (data) => {
     return request('/message/get', 'post', data)
   },
-    // 系统消息详情
-  sysDetail: (data,id) => {
-    return request('/message/detail/'+id, 'post', data)
+  // 系统消息详情
+  sysDetail: (data, id) => {
+    return request('/message/detail/' + id, 'post', data)
   },
   // 用户协议
-  agreement(data,id){
-    return request('/content/detail_by_menu/'+id, 'post', data, true, true)
-  }
+  agreement(data, id) {
+    return request('/content/detail_by_menu/' + id, 'post', data, true, true)
+  },
+  // 意见
+  opinion(data) {
+    return request('/opinion/create', 'post', data)
+  }, 
 }

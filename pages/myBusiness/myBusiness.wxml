@@ -20,6 +20,7 @@
 				</view>
 			</view>
 		</view>
+		<van-empty wx:if="{{dataList.length==0}}" description="暂无发布的商机" />
 	</view>
 	<view class="btn-box">
 		<van-button type="info" round catchtap="onRelease">发布商机</van-button>

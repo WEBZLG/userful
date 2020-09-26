@@ -1,6 +1,6 @@
 <!--pages/online/online.wxml-->
 <view>
   <van-cell-group>
-    <van-cell wx:for="{{navList}}" wx:key="index" title="{{item.title}}" is-link/>
+    <van-cell wx:for="{{navList}}" wx:key="index" title="{{item.title}}"  data-title="{{item.title}}" data-id="{{item.id}}" is-link catchtap="onArticle"/>
   </van-cell-group>
 </view>

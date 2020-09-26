@@ -52,7 +52,7 @@ Page({
           password: _this.data.password,
         })
         .then(res => {
-          //console.log(res)
+          console.log(res)
           wx.showToast({
             title: res.message,
             icon: 'none'
@@ -129,7 +129,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

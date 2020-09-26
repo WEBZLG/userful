@@ -5,7 +5,7 @@
 		<van-area area-list="{{ areaList }}" bind:confirm="onConfirm" bind:cancel="onClose" />
 	</van-popup>
 	<view class="page-section page-section-spacing swiper">
-		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
 			<block wx:for="{{background}}" wx:key="image">
 				<swiper-item>
 					<view class="swiper-item">
@@ -27,4 +27,5 @@
 	<!-- <van-divider /> -->
 	<van-cell title="每日一课" value="商机" link-type="navigateTo" url="/pages/business/business" custom-class="caption" />
 	<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}" label="{{item.create}}" catchtap="onArticle" data-id="{{item.id}}"  data-title="每日一课" is-link/>
+	<van-empty wx:if="{{dataList.length==0}}" description="暂无推荐" />
 </view>

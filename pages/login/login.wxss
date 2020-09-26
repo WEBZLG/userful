@@ -30,7 +30,13 @@ van-button {
   height: 440rpx;
   width: 100%;
 }
-
+.logo{
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 15% auto;
+}
 .forget-pwd {
   font-size: 14px;
   text-align: right;

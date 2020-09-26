@@ -6,7 +6,7 @@ Page({
    */
   data: {
     navList:[{
-      id:1,
+      id:11,
       title:'转发文章'
     },{
       id:2,
@@ -19,7 +19,19 @@ Page({
       title:'分享产品'
     }]
   },
-
+  onArticle(e){
+    let id = e.currentTarget.dataset.id
+    let title = e.currentTarget.dataset.title
+    if(id==11){
+      wx.navigateTo({
+        url: '../shareOnline/shareOnline?id=' + id+'&title='+title
+      })
+    }else{
+      // wx.navigateTo({
+      //   url: '../publish/publish?id=' + id+'&title='+title
+      // })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -72,7 +84,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

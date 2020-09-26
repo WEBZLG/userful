@@ -5,4 +5,5 @@
 			<view class="content">{{item.content}}</view>
 		</van-panel>
 	</block>
+	<van-empty  wx:if="{{dataList.length==0}}" description="暂无系统消息" />
 </view>
