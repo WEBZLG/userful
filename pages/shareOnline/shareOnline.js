@@ -8,8 +8,9 @@ Page({
   data: {
     id: '',
     dataList: [],
-    imgSrc:'',
-    canvasShow:true
+    canvasShow: true,
+    canvas: '',
+    ctx: ''
   },
   // 分享
   share(e) {
@@ -29,48 +30,96 @@ Page({
       const ctx = canvas.getContext('2d');
       canvas.width = 300; //本地图像的width
       canvas.height = 300; //本地图像的height
-      let img = canvas.createImage(); //canvas 2d 通过此函数创建一个图片对象
-      img.onload = (e) => {
-        ctx.drawImage(img, 0, 0, 300, 300);
-        ctx.font = "28px sans-serif";
-        ctx.fillStyle = "rgba(0, 0, 0, 1)";
-        ctx.fillText("我是分享文字111111111", 0, 40);
-        ctx.fillStyle = "rgba(0, 0, 0, .5)";
-        ctx.fillText("我是分享文字222", 0, 80);
-        wx.canvasToTempFilePath({
-          canvas,
-          width: 300,
-          height: 300,
-          destWidth: 300,
-          destHeight: 300,
-          success(res) {
-            that.setData({
-              imgSrc:res.tempFilePath,
-              canvasShow:false
-            })
-          }
-        }, that)
-      }
-      img.onerror = (e) => {
-        console.error('err:', e)
-      }
-      img.src = '/images/face1.png'
+      this.setData({
+        canvas,
+        ctx
+      });
+      this.drawBackground()
+      this.drawCode(id)
+      this.setData({
+        canvasShow:false
+      });
     }).exec();
   },
+  // 绘制背景
+  drawBackground() {
+    let canvas = this.data.canvas
+    let ctx = this.data.ctx
+    let img = canvas.createImage(); //canvas 2d 通过此函数创建一个图片对象
+    img.onload = (e) => {
+      ctx.drawImage(img, 0, 0, 300, 300);
+      let text = '接小程序开发，web开发，H5开发，小程序云开发，PHP开发'
+      let moy =  '阅读直接微信扫码'
+      ctx.font = '14px sans-serif';
+      ctx.fillStyle = "rgba(5, 117, 115)";
+      if (text.length <= 16) {
+        ctx.fillText(text,60, 120)
+        ctx.fillStyle = "rgba(0,0,0)";
+        ctx.font = 'normal bold 16px sans-serif';
+        ctx.fillStyle = "red";
+        ctx.fillText(moy, 80,280)
+      }
+      if (text.length <= 32) {
+        let firstLine = text.substring(0, 16);
+        let secondLine = text.substring(16, 32);
+        ctx.fillText(firstLine, 60,120)
+        ctx.fillText(secondLine, 60,140)
+        ctx.fillStyle = "rgba(0,0,0)";
+        ctx.font = 'normal bold 16px sans-serif';
+        ctx.fillStyle = "red";
+        ctx.fillText(moy, 80,280)
+      } else {
+        let firstLine = text.substring(0, 16);
+        let secondLine = text.substring(16, 32) + '...';
+        ctx.fillText(firstLine, 60,120)
+        ctx.fillText(secondLine, 60,140)
+        ctx.font = 'normal bold 16px sans-serif';
+        ctx.fillStyle = "red";
+        ctx.fillText(moy,80, 280)
+      }
+    }
+    img.src = "/images/read.jpg";
+  },
+
+  // 绘制二维码
+  drawCode(id) {
+    let canvas = this.data.canvas
+    let ctx = this.data.ctx
+    API.share({
+      content_id:id,
+      page:'pages/onlineDetail/onlineDetail'
+    }).then(res => {
+      let code = canvas.createImage(); //创建img对象
+      code.onload = () => {
+        ctx.drawImage(code, 0, 220, 60, 80);
+      };
+      let codeUrl = API.IMG_BASE_URL + res.data.qrcode
+      code.src = codeUrl
+    })
+  },
   // 保存图片
-  savePicter(){
+  savePicter() {
     let _this = this
-    let img = this.data.imgSrc
-    API.savePicture(img,function(){
-      _this.setData({
-        canvasShow:true
-      })
+    let canvas = this.data.canvas
+    wx.canvasToTempFilePath({
+      canvas,
+      wwidth: 300,
+      height: 200,
+      destWidth: 300,
+      destHeight: 200,
+      success(res) {
+        API.savePicture(res.tempFilePath,function () {
+          _this.setData({
+            canvasShow: true
+          })
+        })
+      }
     })
   },
   // 关闭分享
-  showClose(){
+  showClose() {
     this.setData({
-      canvasShow:true
+      canvasShow: true
     })
   },
   // 获取列表

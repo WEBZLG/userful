@@ -320,8 +320,15 @@ Page({
     }
   },
   onShareTimeline(res){
+    let code =  wx.getStorageSync('userInfo').p_code;
+    if(code==undefined){
+      code=""
+    }
     return {
-      title: '商云社'
+      title: '商云社',
+      query: {
+        p: code
+      },
     }
   }
 })

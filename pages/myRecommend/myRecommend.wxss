@@ -14,7 +14,7 @@
   text-align: center;
   background:rgba(0,0,0,.6);
 }
-#shareCanvas{
+#canvas{
   height: 800rpx;
   width: 500rpx;
   margin: 20% auto 0;

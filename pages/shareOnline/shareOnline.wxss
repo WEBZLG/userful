@@ -48,8 +48,9 @@
 }
 .canvas{
   width: 600rpx;
-  height: 600rpx;
-  display: none;
+  height: 400rpx;
+  /* display: none; */
+  margin: 40% auto 0;
 }
 .intro{
   position: fixed;

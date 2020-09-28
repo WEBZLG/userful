@@ -77,7 +77,7 @@ const request = (url, method, data, noToken, noUid) => {
         } else {
           reject(error)
           wx.showToast({
-            title: error.data.message,
+            title: error.errMsg,
             icon: 'none'
           })
         }
