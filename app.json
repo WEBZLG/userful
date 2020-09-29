@@ -30,7 +30,8 @@
     "pages/online/online",
     "pages/shareOnline/shareOnline",
     "pages/onlineDetail/onlineDetail",
-    "pages/opinion/opinion"
+    "pages/opinion/opinion",
+    "pages/live/live"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -56,6 +57,12 @@
         "iconPath": "/images/icon-qy1.png",
         "selectedIconPath": "/images/icon-qy2.png",
         "text": "企服"
+      },
+      {
+        "pagePath": "pages/live/live",
+        "iconPath": "/images/icon-live1.png",
+        "selectedIconPath": "/images/icon-live2.png",
+        "text": "直播间"
       },
       {
         "pagePath": "pages/my/my",

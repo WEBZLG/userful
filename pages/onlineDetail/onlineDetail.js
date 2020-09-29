@@ -22,8 +22,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let id = options.id
-    this.getDetail(id)
+    console.log(options)
+    if (options.scene) {
+      const scene = decodeURIComponent(options.scene)
+      console.log(scene)
+      let id = scene.split('&')[1].split('=')[1]
+      this.getDetail(id)
+      let code = scene.split('=')[1]
+      wx.setStorageSync('p_code', code);
+    }else{
+      let id = options.id
+      let code = options.p
+      wx.setStorageSync('p_code', code);
+      this.getDetail(id)
+    }
   },
 
   /**
@@ -71,7 +83,36 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
-
-  // }
+  onShareAppMessage: function (res) {
+    var that = this;
+    let title = this.data.dataList.title
+    let id = this.data.dataList.id
+    let code =  wx.getStorageSync('userInfo').p_code;
+    if(code==undefined){
+      code=""
+    }
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      //console.log(res.target)
+    }
+    return {
+      title: title,
+      path: '/pages/home/home?p='+code+'&id='+id
+    }
+  },
+  onShareTimeline(res){
+    let title = this.data.dataList.title
+    let id = this.data.dataList.id
+    let code =  wx.getStorageSync('userInfo').p_code;
+    if(code==undefined){
+      code=""
+    }
+    return {
+      title: title,
+      query: {
+        p: code,
+        id:id
+      },
+    }
+  }
 })

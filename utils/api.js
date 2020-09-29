@@ -17,8 +17,12 @@ const request = (url, method, data, noToken, noUid) => {
   //通过md5加密验签
   data.sign = UTIL.getMD5Sign(data, loginToken)
   return new Promise((resolve, reject) => {
-    wx.showLoading({
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
+    wx.showToast({
       title: '加载中',
+      icon: 'loading'
     })
     wx.request({
       url: API_BASE_URL + url,
@@ -28,11 +32,12 @@ const request = (url, method, data, noToken, noUid) => {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success(request) {
+        wx.hideToast()
         if (request.statusCode == '200') {
-          wx.hideLoading()
+          // wx.hideLoading()
           resolve(request.data)
         } else if (request.statusCode == '401') {
-          wx.hideLoading()
+          // wx.hideLoading()
           if (request.data.message == "您当前不是会员或会员已过期，请开通会员后再访问") {
             wx.showModal({
               title: '提示',
@@ -50,6 +55,7 @@ const request = (url, method, data, noToken, noUid) => {
               }
             })
           } else {
+            console.log(request)
             wx.showToast({
               title: request.data.message,
               icon: 'none'
@@ -61,26 +67,33 @@ const request = (url, method, data, noToken, noUid) => {
             }, 1500);
           }
         } else {
+          console.log(request)
           wx.showToast({
-            title: request.data.message,
+            title: request.statusCode,
             icon: 'none'
           })
         }
       },
       fail(error) {
-        //console.log(error)
-        if (error.errMsg) {
-          wx.showToast({
-            title: error.errMsg,
-            icon: 'none'
-          })
-        } else {
-          reject(error)
-          wx.showToast({
-            title: error.errMsg,
-            icon: 'none'
-          })
-        }
+        wx.hideToast({
+          success: (res) => {
+            if (error.errMsg) {
+              wx.showToast({
+                title: error.errMsg,
+                icon: 'none'
+              })
+            } else {
+              console.log(error)
+              reject(error)
+              wx.showToast({
+                title: error.errMsg,
+                icon: 'none'
+              })
+            }
+          },
+        })
+        // wx.hideLoading()
+
       }
     })
   });

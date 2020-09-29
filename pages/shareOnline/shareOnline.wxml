@@ -24,16 +24,18 @@
 		</view> -->
 		<van-cell-group>
 			<van-cell center wx:for="{{dataList}}" wx:key="index" title="{{item.title}}"  label="{{item.create}}" data-id="{{item.id}}" catchtap="onDetail">
-				<van-button type="primary" size="mini" data-id="{{item.id}}" data-title="{{item.title}}" catchtap="share">分享</van-button>
+				<van-button type="primary" size="mini" round data-id="{{item.id}}" data-title="{{item.title}}" catchtap="checkLogin">分享</van-button>
 			</van-cell>
 		</van-cell-group>
 		<van-empty  wx:if="{{dataList.length==0}}" description="暂无数据" />
 	</view>
 	<view class="intro" hidden="{{canvasShow}}">
-		<canvas id="canvas" class="canvas" type="2d"></canvas>
+		<view class="canvas">
+			<canvas canvas-id="canvas" id='canvas'></canvas>
+		</view>
 		<view class="btn-box">
 			<van-button type="warning" round size="small" catchtap="showClose">关闭</van-button>
-			<van-button type="primary" round size="small" catchtap="savePicter">保存到相册</van-button>
+			<van-button type="primary" round size="small" catchtap="savePhoto">保存到相册</van-button>
 		</view>
 	</view>
 </view>

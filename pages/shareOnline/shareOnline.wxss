@@ -46,10 +46,10 @@
 .text-left{
   text-align: left;
 }
+#canvas,
 .canvas{
-  width: 600rpx;
-  height: 400rpx;
-  /* display: none; */
+  width: 300px;
+  height: 200px;
   margin: 40% auto 0;
 }
 .intro{

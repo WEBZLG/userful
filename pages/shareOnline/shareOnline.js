@@ -9,113 +9,186 @@ Page({
     id: '',
     dataList: [],
     canvasShow: true,
-    canvas: '',
-    ctx: ''
   },
-  // 分享
-  share(e) {
-    let that = this;
-    let code = wx.getStorageSync('userInfo').p_code;
-    if (code == undefined) {
-      code = ""
-    }
-    let id = e.currentTarget.dataset.id
-    // 分享文章
-    const query = wx.createSelectorQuery(); //如果是在组件中，则改成 this.createSelectorQuery()
-    query.select('#canvas').fields({
-      node: true,
-      rect: true
-    }, res => {
-      const canvas = res.node;
-      const ctx = canvas.getContext('2d');
-      canvas.width = 300; //本地图像的width
-      canvas.height = 300; //本地图像的height
-      this.setData({
-        canvas,
-        ctx
-      });
-      this.drawBackground()
-      this.drawCode(id)
-      this.setData({
-        canvasShow:false
-      });
-    }).exec();
-  },
-  // 绘制背景
-  drawBackground() {
-    let canvas = this.data.canvas
-    let ctx = this.data.ctx
-    let img = canvas.createImage(); //canvas 2d 通过此函数创建一个图片对象
-    img.onload = (e) => {
-      ctx.drawImage(img, 0, 0, 300, 300);
-      let text = '接小程序开发，web开发，H5开发，小程序云开发，PHP开发'
-      let moy =  '阅读直接微信扫码'
-      ctx.font = '14px sans-serif';
-      ctx.fillStyle = "rgba(5, 117, 115)";
-      if (text.length <= 16) {
-        ctx.fillText(text,60, 120)
-        ctx.fillStyle = "rgba(0,0,0)";
-        ctx.font = 'normal bold 16px sans-serif';
-        ctx.fillStyle = "red";
-        ctx.fillText(moy, 80,280)
-      }
-      if (text.length <= 32) {
-        let firstLine = text.substring(0, 16);
-        let secondLine = text.substring(16, 32);
-        ctx.fillText(firstLine, 60,120)
-        ctx.fillText(secondLine, 60,140)
-        ctx.fillStyle = "rgba(0,0,0)";
-        ctx.font = 'normal bold 16px sans-serif';
-        ctx.fillStyle = "red";
-        ctx.fillText(moy, 80,280)
-      } else {
-        let firstLine = text.substring(0, 16);
-        let secondLine = text.substring(16, 32) + '...';
-        ctx.fillText(firstLine, 60,120)
-        ctx.fillText(secondLine, 60,140)
-        ctx.font = 'normal bold 16px sans-serif';
-        ctx.fillStyle = "red";
-        ctx.fillText(moy,80, 280)
-      }
-    }
-    img.src = "/images/read.jpg";
-  },
-
-  // 绘制二维码
-  drawCode(id) {
-    let canvas = this.data.canvas
-    let ctx = this.data.ctx
-    API.share({
-      content_id:id,
-      page:'pages/onlineDetail/onlineDetail'
-    }).then(res => {
-      let code = canvas.createImage(); //创建img对象
-      code.onload = () => {
-        ctx.drawImage(code, 0, 220, 60, 80);
-      };
-      let codeUrl = API.IMG_BASE_URL + res.data.qrcode
-      code.src = codeUrl
-    })
-  },
-  // 保存图片
-  savePicter() {
+  // 列表跳转
+  checkLogin(e) {
     let _this = this
-    let canvas = this.data.canvas
-    wx.canvasToTempFilePath({
-      canvas,
-      wwidth: 300,
-      height: 200,
-      destWidth: 300,
-      destHeight: 200,
-      success(res) {
-        API.savePicture(res.tempFilePath,function () {
-          _this.setData({
-            canvasShow: true
+    let userInfo = wx.getStorageSync('userInfo');
+    if (userInfo == '' || userInfo == undefined) {
+      wx.redirectTo({
+        url: '../login/login',
+      })
+    } else {
+      API.isSignIn({}, {
+          uid: userInfo.user_id
+        })
+        .then(res => {
+          if (res.message == '已登录') {
+            wx.setStorageSync('loginToken', res.data.login_token);
+            wx.setStorageSync('userInfo', res.data.user);
+            _this.share(e)
+          } else {
+            wx.showToast({
+              title: 'res.message',
+              icon: "none"
+            })
+            setTimeout(() => {
+              wx.redirectTo({
+                url: '../login/login',
+              })
+            }, 1500);
+          }
+        })
+    }
+  },
+// 分享
+share(e) {
+  let id = e.currentTarget.dataset.id
+  let title = e.currentTarget.dataset.title
+  API.share({
+    content_id:id,
+    page:'pages/onlineDetail/onlineDetail'
+  }).then(res => {
+    let that = this
+    let codeUrl = API.IMG_BASE_URL + res.data.qrcode
+    let backUrl = API.IMG_BASE_URL + '/uploads/head_img/20200929/UHNIfPpmEUQt99eZTH9W3j5mQSTmE18FGYsFFG1n.jpeg'
+    wx.showLoading({
+      title: '生成海报中',
+    })
+    API.getImage(codeUrl).then(res => {
+      let codePath = res.path
+      API.getImage(backUrl).then(res => {
+        let backPath = res.path
+        API.getImageAll([codePath, backPath]).then((res) => {
+          const ctx = wx.createCanvasContext('canvas')
+          // 底图
+          ctx.drawImage(res[1].path, 0, 0, 300, 200);
+          // 小程序码
+          ctx.drawImage(res[0].path, 10, 120, 60, 60)
+          if (title.length <= 16) {
+            ctx.setFillStyle('#FF2742')//文字颜色：默认黑色
+            ctx.setFontSize(16)//设置字体大小，默认10
+            ctx.fillText(title, 90, 90)
+          }
+          if (title.length <= 32) {
+            let firstLine = title.substring(0, 16);
+            let secondLine = title.substring(16, 32);
+            ctx.setFillStyle('#FF2742')//文字颜色：默认黑色
+            ctx.setFontSize(16)//设置字体大小，默认10
+            ctx.fillText(firstLine, 90, 90)
+            ctx.fillText(secondLine, 90, 110)
+          } else {
+            let firstLine = title.substring(0, 16);
+            let secondLine = title.substring(16, 31) + '...';
+            ctx.setFillStyle('#FF2742')//文字颜色：默认黑色
+            ctx.setFontSize(16)//设置字体大小，默认10
+            ctx.fillText(firstLine, 90, 90)
+            ctx.fillText(secondLine, 90, 110)
+          }
+      
+          ctx.stroke()
+          ctx.draw()
+          wx.hideLoading()
+          that.setData({
+            canvasShow: false
           })
         })
-      }
+      })
     })
-  },
+  })
+},
+// 生成图片保存相册
+savePhoto() {
+  let that = this
+  wx.showLoading({
+    title: '正在保存',
+    mask: true,
+  })
+  wx.canvasToTempFilePath({
+    canvasId: 'canvas',
+    success: function (res) {
+      wx.hideLoading()
+      let tempFilePath = res.tempFilePath;
+      wx.saveImageToPhotosAlbum({
+        filePath: tempFilePath,
+        success(res) {
+          wx.showModal({
+            content: '图片已保存到相册，赶紧晒一下吧~',
+            showCancel: false,
+            confirmText: '好的',
+            confirmColor: '#333',
+            success: function (res) {
+              if (res.confirm) {
+                that.setData({
+                  canvasShow: true
+                })
+              }
+            },
+            fail: function (res) {
+              that.setData({
+                canvasShow: true
+              })
+            }
+          })
+        },
+        fail: function (err) {
+          if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+            //console.log("当初用户拒绝，再次发起授权")
+            wx.showModal({
+              content: '是否打开权限设置？',
+              showCancel: false,
+              confirmText: '好的',
+              confirmColor: '#333',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.openSetting({
+                    success(settingdata) {
+                      //console.log(settingdata)
+                      if (settingdata.authSetting['scope.writePhotosAlbum']) {
+                        wx.showToast({
+                          title: '点击保存到相册按钮',
+                          mask: true,
+                          icon: "none"
+                        })
+                      } else {
+                        wx.showToast({
+                          title: '拒绝权限，无法保存图片',
+                          mask: true,
+                          icon: "none"
+                        })
+                        setTimeout(() => {
+                          that.setData({
+                            canvasShow: true
+                          })
+                        }, 2000);
+                      }
+                    }
+                  })
+                }
+              },
+              fail: function (res) {
+                that.setData({
+                  canvasShow: true
+                })
+              }
+            })
+          } else if (err.errMsg == "saveImageToPhotosAlbum:fail:auth denied") {
+            wx.showToast({
+              title: '拒绝权限，无法保存图片',
+              mask: true,
+              icon: "none"
+            })
+            setTimeout(() => {
+              that.setData({
+                canvasShow: true
+              })
+            }, 2000);
+          }
+        }
+      })
+    }
+  });
+},
   // 关闭分享
   showClose() {
     this.setData({

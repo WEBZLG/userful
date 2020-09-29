@@ -17,6 +17,12 @@ Component({
       iconPath: "/images/icon-qy1.png",
       selectedIconPath: "/images/icon-qy2.png",
       text: "企服"
+    },
+    {
+      pagePath: "/pages/live/live",
+      iconPath: "/images/icon-live1.png",
+      selectedIconPath: "/images/icon-live2.png",
+      text: "直播间"
     },{
       pagePath: "/pages/my/my",
       iconPath: "/images/icon-wd1.png",

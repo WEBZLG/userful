@@ -54,7 +54,7 @@ Page({
       },
       {
         imgPath: '../../images/wangzhuan.png',
-        title: "网赚项目",
+        title: "兼职网赚",
         id: 11
       }
     ]
