@@ -47,22 +47,32 @@ Page({
       })
       return false;
     } else {
-      API.login({
-          mobile: _this.data.phone,
-          password: _this.data.password,
-        })
-        .then(res => {
-          console.log(res)
-          wx.showToast({
-            title: res.message,
-            icon: 'none'
-          })
-          wx.setStorageSync('loginToken', res.data.login_token);
-          wx.setStorageSync('userInfo', res.data.user);
-          wx.reLaunch({
-            url: '../home/home',
-          })
-        })
+      wx.login({
+        success(res) {
+          if (res.code) {
+            //发起网络请求
+            API.login({
+                mobile: _this.data.phone,
+                password: _this.data.password,
+                wechat_code: res.code
+              })
+              .then(res => {
+                //console.log(res)
+                wx.showToast({
+                  title: res.message,
+                  icon: 'none'
+                })
+                wx.setStorageSync('loginToken', res.data.login_token);
+                wx.setStorageSync('userInfo', res.data.user);
+                wx.reLaunch({
+                  url: '../home/home',
+                })
+              })
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
     }
   },
   // 跳转注册

@@ -6,12 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:'',
     dataList:''
   },
   // 获取列表
-  getDetail(id) {
+  getDetail(id,code) {
     let _this = this
-    API.articelDetail({},id).then(res => {
+    API.articelDetail({
+      p_code:code
+    },id).then(res => {
       //console.log(res)
       _this.setData({
         dataList:res.data.content
@@ -23,18 +26,29 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    let _this = this
     if (options.scene) {
       const scene = decodeURIComponent(options.scene)
       console.log(scene)
       let id = scene.split('&')[1].split('=')[1]
-      this.getDetail(id)
+      _this.setData({
+        id:id
+      })
       let code = scene.split('=')[1]
+      this.getDetail(id,code)
       wx.setStorageSync('p_code', code);
     }else{
       let id = options.id
+      _this.setData({
+        id:id
+      })
       let code = options.p
-      wx.setStorageSync('p_code', code);
-      this.getDetail(id)
+      if(code){
+        wx.setStorageSync('p_code', code);
+      }else{
+        code=''
+      }
+      this.getDetail(id,code)
     }
   },
 
@@ -86,18 +100,15 @@ Page({
   onShareAppMessage: function (res) {
     var that = this;
     let title = this.data.dataList.title
-    let id = this.data.dataList.id
+    let id = this.data.id
     let code =  wx.getStorageSync('userInfo').p_code;
     if(code==undefined){
       code=""
     }
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      //console.log(res.target)
-    }
+    console.log(code,id)
     return {
       title: title,
-      path: '/pages/home/home?p='+code+'&id='+id
+      path: '/pages/onlineDetail/onlineDetail?p='+code+'&id='+id
     }
   },
   onShareTimeline(res){

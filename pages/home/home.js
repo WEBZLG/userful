@@ -18,8 +18,8 @@ Page({
     show: false,
     areaList: AREA.default,
     loading: true,
-    areaText: '',//地址
-    dataList:[],//每日一课
+    areaText: '', //地址
+    dataList: [], //每日一课
     iconNav: [{
         imgPath: '../../images/xueyuan.png',
         title: "国学商道",
@@ -91,16 +91,16 @@ Page({
         })
       })
   },
-  onArticle(e){
+  onArticle(e) {
     let id = e.currentTarget.dataset.id
     let title = e.currentTarget.dataset.title
-    if(id==11){
+    if (id == 11) {
       wx.navigateTo({
         url: '../online/online',
       })
-    }else{
+    } else {
       wx.navigateTo({
-        url: '../publish/publish?id=' + id+'&title='+title
+        url: '../publish/publish?id=' + id + '&title=' + title
       })
     }
   },
@@ -114,36 +114,43 @@ Page({
         url: '../login/login',
       })
     } else {
-      API.isSignIn({}, {
-          uid: userInfo.user_id
-        })
-        .then(res => {
-          if (res.message == '已登录') {
-            wx.setStorageSync('loginToken', res.data.login_token);
-            wx.setStorageSync('userInfo', res.data.user);
-            let id = e.currentTarget.dataset.id
-            let title = e.currentTarget.dataset.title
-            if(id==11){
-              wx.navigateTo({
-                url: '../online/online',
+      wx.login({
+        success(res) {
+          if (res.code) {
+            API.isSignIn({}, {
+                uid: userInfo.user_id,
+                wechat_code: res.code
               })
-            }else{
-              wx.navigateTo({
-                url: '../publish/publish?id=' + id+'&title='+title
+              .then(res => {
+                if (res.message == '已登录') {
+                  wx.setStorageSync('loginToken', res.data.login_token);
+                  wx.setStorageSync('userInfo', res.data.user);
+                  let id = e.currentTarget.dataset.id
+                  let title = e.currentTarget.dataset.title
+                  if (id == 11) {
+                    wx.navigateTo({
+                      url: '../online/online',
+                    })
+                  } else {
+                    wx.navigateTo({
+                      url: '../publish/publish?id=' + id + '&title=' + title
+                    })
+                  }
+                } else {
+                  wx.showToast({
+                    title: 'res.message',
+                    icon: "none"
+                  })
+                  setTimeout(() => {
+                    wx.redirectTo({
+                      url: '../login/login',
+                    })
+                  }, 1500);
+                }
               })
-            }
-          } else {
-            wx.showToast({
-              title: 'res.message',
-              icon: "none"
-            })
-            setTimeout(() => {
-              wx.redirectTo({
-                url: '../login/login',
-              })
-            }, 1500);
           }
-        })
+        }
+      })
     }
   },
   // 获取位置
@@ -246,8 +253,8 @@ Page({
     let _this = this
     API.articelList({
       menu_id: 9,
-      page:1,
-      page_size:10
+      page: 1,
+      page_size: 10
     }).then(res => {
       //console.log(res)
       _this.setData({
@@ -259,16 +266,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     let _this = this;
     if (options.scene) {
       const scene = decodeURIComponent(options.scene)
       var code = scene.split('=')[1]
       wx.setStorageSync('p_code', code);
-    }
-    if(options.p){
+    }else if (options.p) {
       let code = options.p
       wx.setStorageSync('p_code', code);
+    }else{
+      wx.setStorageSync('p_code', );
     }
     qqmapsdk = new QQMapWX({
       key: 'OQYBZ-GMQKD-X3I4Q-H4YNU-3TDQ5-PWFAQ' //自己的key秘钥
@@ -334,9 +341,9 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    let code =  wx.getStorageSync('userInfo').p_code;
-    if(code==undefined){
-      code=""
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
     }
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -344,13 +351,13 @@ Page({
     }
     return {
       title: '商云社',
-      path: '/pages/home/home?p='+code
+      path: '/pages/home/home?p=' + code
     }
   },
-  onShareTimeline(res){
-    let code =  wx.getStorageSync('userInfo').p_code;
-    if(code==undefined){
-      code=""
+  onShareTimeline(res) {
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
     }
     return {
       title: '商云社',

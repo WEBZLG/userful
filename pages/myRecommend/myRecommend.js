@@ -53,9 +53,9 @@ Page({
           API.getImageAll([codePath, backPath]).then((res) => {
             const ctx = wx.createCanvasContext('shareCanvas')
             // 底图
-            ctx.drawImage(res[1].path, -5, 0, 300, 450);
+            ctx.drawImage(res[1].path, 0, 0, 250, 400);
             // 小程序码
-            ctx.drawImage(res[0].path, 100, 300, 80, 80)
+            ctx.drawImage(res[0].path, 85, 300, 80, 80)
             ctx.stroke()
             ctx.draw()
             wx.hideLoading()
@@ -225,7 +225,31 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
-
-  // }
+  onShareAppMessage: function (res) {
+    var that = this;
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
+    }
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      //console.log(res.target)
+    }
+    return {
+      title: '商云社',
+      path: '/pages/home/home?p=' + code
+    }
+  },
+  onShareTimeline(res) {
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
+    }
+    return {
+      title: '商云社',
+      query: {
+        p: code
+      },
+    }
+  }
 })

@@ -135,7 +135,6 @@ Page({
   onLoad: function (options) {
     let _this = this
     let userInfo = wx.getStorageSync('userInfo').info
-    console.log(userInfo)
     if(userInfo){
       this.setData({
         province: userInfo.province,

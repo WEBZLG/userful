@@ -29,7 +29,7 @@ Page({
       url: '../changePwd/changePwd',
     })
   },
-  
+
   // 跳转公司认证
   goEnterprise() {
     wx.navigateTo({
@@ -37,7 +37,7 @@ Page({
     })
   },
   // 跳转我的商机
-  goBusiness(){
+  goBusiness() {
     wx.navigateTo({
       url: '../myBusiness/myBusiness',
     })
@@ -49,7 +49,7 @@ Page({
     })
   },
   // 跳转个人信息
-  goPersonal(){
+  goPersonal() {
     wx.navigateTo({
       url: '../personal/personal',
     })
@@ -61,21 +61,21 @@ Page({
     })
   },
   // 打电话
-  getPhone(){
+  getPhone() {
     wx.makePhoneCall({
-      cancelColor:'#EE6A08',//取消文字的颜色
-      confirmColor: '#2DBFB2',//确定文字的颜色
+      cancelColor: '#EE6A08', //取消文字的颜色
+      confirmColor: '#2DBFB2', //确定文字的颜色
       phoneNumber: '18745042089',
     })
   },
   // 系统消息
-  getSysmsg(){
+  getSysmsg() {
     wx.navigateTo({
       url: '../sysMessage/sysMessage',
     })
   },
   // 用户协议
-  getAgreement(){
+  getAgreement() {
     wx.navigateTo({
       url: '../agreement/agreement',
     })
@@ -83,7 +83,9 @@ Page({
   // 更换头像
   afterRead(event) {
     let _this = this
-    const {file} = event.detail;
+    const {
+      file
+    } = event.detail;
     let userInfo = wx.getStorageSync('userInfo');
     let param = {
       change_type: "head",
@@ -117,8 +119,8 @@ Page({
     let _this = this
     wx.showModal({
       title: '提示',
-      cancelColor:'#EE6A08',//取消文字的颜色
-      confirmColor: '#2DBFB2',//确定文字的颜色
+      cancelColor: '#EE6A08', //取消文字的颜色
+      confirmColor: '#2DBFB2', //确定文字的颜色
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
@@ -155,54 +157,62 @@ Page({
         url: '../login/login',
       })
     } else {
-      API.isSignIn({}, {
-          uid: userInfo.user_id
-        })
-        .then(res => {
-          if (res.message == '已登录') {
-            wx.setStorageSync('loginToken', res.data.login_token);
-            wx.setStorageSync('userInfo', res.data.user);
-            _this.setData({
-              userInfo: res.data.user
-            })
-            switch (type) {
-              case '0':
-                _this.goCertification()
-                break;
-              case '1':
-                _this.goChangePhone()
-                break;
-              case '2':
-                _this.goChangePwd()
-                break;
-              case '3':
-                _this.goMyRecommend()
-                break;
-              case '4':
-                _this.goEnterprise()
-                break;
-              case '5':
-                _this.goEnterprise()
-                break;
-              case '6':
-              _this.goBusiness()
-              break;
-              case '7':
-              _this.goPersonal()
-              break;
-            }
-          } else {
-            wx.showToast({
-              title: 'res.message',
-              icon: "none"
-            })
-            setTimeout(() => {
-              wx.redirectTo({
-                url: '../login/login',
+      wx.login({
+        success(res) {
+          if (res.code) {
+
+            API.isSignIn({}, {
+                uid: userInfo.user_id,
+                wechat_code: res.code
               })
-            }, 1500);
+              .then(res => {
+                if (res.message == '已登录') {
+                  wx.setStorageSync('loginToken', res.data.login_token);
+                  wx.setStorageSync('userInfo', res.data.user);
+                  _this.setData({
+                    userInfo: res.data.user
+                  })
+                  switch (type) {
+                    case '0':
+                      _this.goCertification()
+                      break;
+                    case '1':
+                      _this.goChangePhone()
+                      break;
+                    case '2':
+                      _this.goChangePwd()
+                      break;
+                    case '3':
+                      _this.goMyRecommend()
+                      break;
+                    case '4':
+                      _this.goEnterprise()
+                      break;
+                    case '5':
+                      _this.goEnterprise()
+                      break;
+                    case '6':
+                      _this.goBusiness()
+                      break;
+                    case '7':
+                      _this.goPersonal()
+                      break;
+                  }
+                } else {
+                  wx.showToast({
+                    title: 'res.message',
+                    icon: "none"
+                  })
+                  setTimeout(() => {
+                    wx.redirectTo({
+                      url: '../login/login',
+                    })
+                  }, 1500);
+                }
+              })
           }
-        })
+        }
+      })
     }
   },
 
@@ -306,9 +316,9 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    let code =  wx.getStorageSync('userInfo').p_code;
-    if(code==undefined){
-      code=""
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
     }
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -316,13 +326,13 @@ Page({
     }
     return {
       title: '商云社',
-      path: '/pages/home/home?p='+code
+      path: '/pages/home/home?p=' + code
     }
   },
-  onShareTimeline(res){
-    let code =  wx.getStorageSync('userInfo').p_code;
-    if(code==undefined){
-      code=""
+  onShareTimeline(res) {
+    let code = wx.getStorageSync('userInfo').p_code;
+    if (code == undefined) {
+      code = ""
     }
     return {
       title: '商云社',
